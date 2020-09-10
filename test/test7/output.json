@@ -1,0 +1,49 @@
+{
+    "string": "abcabcabc",
+    "number": "123456789123456789123456789",
+    "boolean": false,
+    "array": [
+        {
+            "string": "abc",
+            "number": "123"
+        },
+        {
+            "string": "abc",
+            "number": "456"
+        },
+        {
+            "string": "abc",
+            "number": "789"
+        },
+        {
+            "string": "abc",
+            "number": "123"
+        },
+        {
+            "string": "abc",
+            "number": "456"
+        },
+        {
+            "string": "abc",
+            "number": "789"
+        }
+    ],
+    "object": {
+        "string": "abcabc",
+        "number": 12300,
+        "array": [
+            {
+                "string": "abc",
+                "number": "123"
+            },
+            {
+                "string": "abc",
+                "number": "456"
+            },
+            {
+                "string": "abc",
+                "number": "789"
+            }
+        ]
+    }
+}

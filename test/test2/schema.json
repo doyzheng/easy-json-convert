@@ -1,0 +1,45 @@
+{
+    "type": "object",
+    "required": [],
+
+    "properties": {
+        "str": {
+            "alias": "string",
+            "key": "str",
+            "type": "string"
+        },
+
+        "num": {
+            "alias": "number",
+            "key": "num",
+            "type": "number"
+        },
+
+        "bool": {
+            "alias": "boolean",
+            "key": "bool",
+            "type": "boolean"
+        },
+
+        "empty": {
+            "alias": "null",
+            "key": "empty",
+            "type": null
+        },
+
+        "arr": {
+            "alias": "array",
+            "key": "arr",
+            "type": "array",
+            "items": {}
+        },
+
+        "obj": {
+            "alias": "object",
+            "key": "obj",
+            "type": "object",
+            "required": [],
+            "properties": {}
+        }
+    }
+}

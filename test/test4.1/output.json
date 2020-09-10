@@ -1,0 +1,16 @@
+{
+    "string": "abc",
+    "num": 123456,
+    "bool": true,
+    "empty": null,
+    "arr": [
+        1,
+        2,
+        3,
+        4
+    ],
+    "obj": {
+        "a": 1,
+        "b": 2
+    }
+}

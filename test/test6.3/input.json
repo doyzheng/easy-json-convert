@@ -1,0 +1,52 @@
+{
+    "api": null,
+    "result": "000000",
+    "msg": null,
+    "data": [
+        {
+            "id": "PROJECT20191126010000000338",
+            "name": "医卫学院",
+            "subList": [
+                {
+                    "id": "PROJECT20191126010000000243",
+                    "name": "中医医术确有专长医师",
+                    "subList": []
+                },
+                {
+                    "id": "PROJECT20191126010000000405",
+                    "name": "中医康复技术",
+                    "subList": []
+                },
+                {
+                    "id": "PROJECT20191126010000000168",
+                    "name": "中医助理医师",
+                    "subList": []
+                }
+            ]
+        },
+        {
+            "id": "PROJECT20191126010000000333",
+            "subList": [
+                {
+                    "name": "中医医术确有专长医师",
+                    "subList": []
+                },
+                {
+                    "id": "PROJECT20191126010000000243",
+                    "subList": []
+                },
+                {
+                    "id": "PROJECT20191126010000000243",
+                    "name": "中医助理医师"
+                }
+            ]
+        },
+        {
+        }
+    ],
+    "seqno": null,
+    "seqno2": null,
+    "seqno3": null,
+    "cid": null,
+    "timestamp": null
+}

@@ -1,0 +1,16 @@
+{
+    "string": "default",
+    "num": 123456,
+    "bool": true,
+    "empty": null,
+    "arr": [1, 2, 3, 4],
+
+    "obj": {
+        "string": "defStr",
+        "num": 123456,
+        "bool": true,
+        "empty": null,
+        "arr": [0, 1],
+        "obj2": {}
+    }
+}

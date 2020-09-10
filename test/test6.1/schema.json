@@ -1,0 +1,86 @@
+{
+    "type": "object",
+    "required": ["api", "result", "msg", "data", "seqno", "cid", "timestamp"],
+
+    "properties": {
+        "api": {
+            "key": "api",
+            "type": "string"
+        },
+
+        "result": {
+            "key": "result",
+            "type": "string"
+        },
+
+        "msg": {
+            "key": "msg",
+            "type": "string"
+        },
+
+        "data": {
+            "key": "data",
+            "type": "array",
+
+            "items": {
+                "type": "object",
+                "required": ["id", "name", "subList"],
+
+                "properties": {
+                    "id": {
+                        "key": "id",
+                        "type": "string"
+                    },
+
+                    "name": {
+                        "key": "name",
+                        "type": "string"
+                    },
+
+                    "subList": {
+                        "key": "subList",
+                        "type": "array",
+
+                        "items": {
+                            "type": "object",
+                            "required": ["id", "name", "subList"],
+
+                            "properties": {
+                                "id": {
+                                    "key": "id",
+                                    "type": "string"
+                                },
+
+                                "name": {
+                                    "key": "name",
+                                    "type": "string"
+                                },
+
+                                "subList": {
+                                    "key": "subList",
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "seqno": {
+            "key": "seqno",
+            "type": "string"
+        },
+
+        "cid": {
+            "key": "cid",
+            "type": "string"
+        },
+
+        "timestamp": {
+            "key": "timestamp",
+            "type": "number"
+        }
+    }
+}

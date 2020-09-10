@@ -1,0 +1,72 @@
+{
+    "type": "object",
+    "required": [],
+
+    "properties": {
+        "string": {
+            "key": "string",
+            "type": "string"
+        },
+
+        "number": {
+            "key": "number",
+            "type": "number"
+        },
+
+        "boolean": {
+            "key": "boolean",
+            "type": "boolean"
+        },
+
+        "null": {
+            "key": "null",
+            "type": null
+        },
+
+        "array": {
+            "key": "array",
+            "type": "array",
+
+            "items": {
+                "type": "number"
+            }
+        },
+
+        "object": {
+            "key": "object",
+            "type": "object",
+            "required": [],
+
+            "properties": {
+                "string": {
+                    "key": "string",
+                    "type": "string"
+                },
+
+                "number": {
+                    "key": "number",
+                    "type": "number"
+                },
+
+                "boolean": {
+                    "key": "boolean",
+                    "type": "boolean"
+                },
+
+                "null": {
+                    "key": "null",
+                    "type": null
+                },
+
+                "array": {
+                    "key": "array",
+                    "type": "array",
+
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            }
+        }
+    }
+}

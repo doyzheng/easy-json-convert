@@ -1,0 +1,89 @@
+{
+    "type": "object",
+    "required": ["api", "result", "msg", "list", "seqno", "cid", "timestamp"],
+
+    "properties": {
+        "api": {
+            "key": "api",
+            "type": "string"
+        },
+
+        "result": {
+            "key": "result",
+            "type": "string"
+        },
+
+        "msg": {
+            "key": "msg",
+            "type": "string"
+        },
+
+        "list": {
+            "alias": "data",
+            "key": "list",
+            "type": "array",
+
+            "items": {
+                "type": "object",
+                "required": ["id", "name", "children"],
+
+                "properties": {
+                    "id": {
+                        "key": "id",
+                        "type": "string"
+                    },
+
+                    "name": {
+                        "key": "name",
+                        "type": "string"
+                    },
+
+                    "children": {
+                        "alias": "subList",
+                        "key": "children",
+                        "type": "array",
+
+                        "items": {
+                            "type": "object",
+                            "required": ["id", "name", "children"],
+
+                            "properties": {
+                                "id": {
+                                    "key": "id",
+                                    "type": "string"
+                                },
+
+                                "name": {
+                                    "key": "name",
+                                    "type": "string"
+                                },
+
+                                "children": {
+                                    "alias": "subList",
+                                    "key": "children",
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "seqno": {
+            "key": "seqno",
+            "type": "string"
+        },
+
+        "cid": {
+            "key": "cid",
+            "type": "string"
+        },
+
+        "timestamp": {
+            "key": "timestamp",
+            "type": "number"
+        }
+    }
+}

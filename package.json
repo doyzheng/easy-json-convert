@@ -1,0 +1,20 @@
+{
+    "name": "filter-json",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "recast": "^0.19.1"
+    },
+    "files": [
+        "index.js"
+    ],
+    "devDependencies": {
+        "mocha": "^8.0.1"
+    },
+    "scripts": {
+        "test": "mocha"
+    },
+    "author": "",
+    "license": "ISC"
+}

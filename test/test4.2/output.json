@@ -1,0 +1,11 @@
+{
+    "string": "default",
+    "number": 123456,
+    "boolean": true,
+    "null": null,
+    "array": [0, 1, 2],
+
+    "object": {
+        "default": "default"
+    }
+}

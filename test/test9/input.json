@@ -1,0 +1,309 @@
+[
+    {
+        "api": "bd/classtype/lessoninfo",
+        "result": "000000",
+        "msg": "",
+        "data": {
+            "classtypeId": "CLASSTYPE20200701020000000005",
+            "projectId": "PROJECT20191126010000000163",
+            "projectName": "二级建造师",
+            "classtypeName": "2020二级建造师企业无忧班A【三期】",
+            "classtypeWelfare": "",
+            "classtypeAppcoverimgurl": "2020/07/07/15941044692490848.png",
+            "classtypeSynopsis": "",
+            "projectSummarypicture": "2020/05/25/15903676412480379.png",
+            "classtypeIntroduceapp": "[{\"linkType\":\"\",\"data\":[{\"type\":\"img\",\"title\":\" \",\"src\":\"2020/07/22/15954063030060299.png\",\"id\":1}]},{\"linkType\":\"\",\"data\":[]},{\"linkType\":\"\",\"data\":[]},{\"linkType\":\"\",\"data\":[]},{\"linkType\":\"\",\"data\":[]},{\"linkType\":\"\",\"data\":[]}]",
+            "generalObjects": [
+                {
+                    "subjectName": "水利水电3科",
+                    "subjectId": "SUBJECT20191126010000000198",
+                    "classCategory": "M",
+                    "classes": [
+                        {
+                            "classId": "CLASS20200701020000000024",
+                            "classCategory": "M",
+                            "classPromotionstatus": "N",
+                            "classBasecount": 259,
+                            "subjectId": "SUBJECT20191126010000000198",
+                            "subjectName": "水利水电3科",
+                            "className": "2020二级建造师企业无忧班A【三期】水利水电3科",
+                            "classPrice": null,
+                            "classStdprice": 980000,
+                            "classSourceid": "e9f4c986-6a04-42ec-bc55-e7d2d7ed44cf",
+                            "classAsertype": "F",
+                            "classAtype": "E",
+                            "classAsertypename": "不过退费",
+                            "classOrdercount": 259
+                        }
+                    ]
+                },
+                {
+                    "subjectName": "市政3科",
+                    "subjectId": "SUBJECT20191126010000000589",
+                    "classCategory": "M",
+                    "classes": [
+                        {
+                            "classId": "CLASS20200701020000000029",
+                            "classCategory": "M",
+                            "classPromotionstatus": "N",
+                            "classBasecount": 259,
+                            "subjectId": "SUBJECT20191126010000000589",
+                            "subjectName": "市政3科",
+                            "className": "2020二级建造师企业无忧班A【三期】市政3科",
+                            "classPrice": null,
+                            "classStdprice": 980000,
+                            "classSourceid": "ff960c0a-5e6b-4fa9-8957-0e9b3ce38a05",
+                            "classAsertype": "F",
+                            "classAtype": "E",
+                            "classAsertypename": "不过退费",
+                            "classOrdercount": 284
+                        }
+                    ]
+                },
+                {
+                    "subjectName": "建筑3科",
+                    "subjectId": "SUBJECT20191126010000000764",
+                    "classCategory": "M",
+                    "classes": [
+                        {
+                            "classId": "CLASS20200701020000000030",
+                            "classCategory": "M",
+                            "classPromotionstatus": "N",
+                            "classBasecount": 259,
+                            "subjectId": "SUBJECT20191126010000000764",
+                            "subjectName": "建筑3科",
+                            "className": "2020二级建造师企业无忧班A【三期】建筑3科",
+                            "classPrice": null,
+                            "classStdprice": 980000,
+                            "classSourceid": "91d3becf-96bd-4f91-9d16-81f88a73264d",
+                            "classAsertype": "F",
+                            "classAtype": "E",
+                            "classAsertypename": "不过退费",
+                            "classOrdercount": 306
+                        }
+                    ]
+                },
+                {
+                    "subjectName": "公路3科",
+                    "subjectId": "SUBJECT20191126010000000932",
+                    "classCategory": "M",
+                    "classes": [
+                        {
+                            "classId": "CLASS20200701020000000032",
+                            "classCategory": "M",
+                            "classPromotionstatus": "N",
+                            "classBasecount": 259,
+                            "subjectId": "SUBJECT20191126010000000932",
+                            "subjectName": "公路3科",
+                            "className": "2020二级建造师企业无忧班A【三期】公路3科",
+                            "classPrice": null,
+                            "classStdprice": 980000,
+                            "classSourceid": "5a711c79-4af5-4648-9e37-c08921c1b013",
+                            "classAsertype": "F",
+                            "classAtype": "E",
+                            "classAsertypename": "不过退费",
+                            "classOrdercount": 262
+                        }
+                    ]
+                },
+                {
+                    "subjectName": "机电3科",
+                    "subjectId": "SUBJECT20191126010000001128",
+                    "classCategory": "M",
+                    "classes": [
+                        {
+                            "classId": "CLASS20200701020000000035",
+                            "classCategory": "M",
+                            "classPromotionstatus": "N",
+                            "classBasecount": 259,
+                            "subjectId": "SUBJECT20191126010000001128",
+                            "subjectName": "机电3科",
+                            "className": "2020二级建造师企业无忧班A【三期】机电3科",
+                            "classPrice": null,
+                            "classStdprice": 980000,
+                            "classSourceid": "7d532e13-5c33-42a1-a602-6b6061797fd0",
+                            "classAsertype": "F",
+                            "classAtype": "E",
+                            "classAsertypename": "不过退费",
+                            "classOrdercount": 275
+                        }
+                    ]
+                }
+            ],
+            "singleObjects": [
+                {
+                    "subjectName": "施工管理",
+                    "subjectId": "SUBJECT20191126010000000385",
+                    "classCategory": "S",
+                    "classes": [
+                        {
+                            "classId": "CLASS20200701020000000025",
+                            "classCategory": "S",
+                            "classPromotionstatus": "N",
+                            "classBasecount": 259,
+                            "subjectId": "SUBJECT20191126010000000385",
+                            "subjectName": "施工管理",
+                            "className": "2020二级建造师企业无忧班A【三期】施工管理",
+                            "classPrice": null,
+                            "classStdprice": 300000,
+                            "classSourceid": "9fec3248-00a2-4055-bb99-1a838396e21a",
+                            "classAsertype": "F",
+                            "classAtype": "E",
+                            "classAsertypename": "不过退费",
+                            "classOrdercount": 263
+                        }
+                    ]
+                },
+                {
+                    "subjectName": "水利水电实务",
+                    "subjectId": "SUBJECT20191126010000000455",
+                    "classCategory": "S",
+                    "classes": [
+                        {
+                            "classId": "CLASS20200701020000000026",
+                            "classCategory": "S",
+                            "classPromotionstatus": "N",
+                            "classBasecount": 259,
+                            "subjectId": "SUBJECT20191126010000000455",
+                            "subjectName": "水利水电实务",
+                            "className": "2020二级建造师企业无忧班A【三期】水利水电实务",
+                            "classPrice": null,
+                            "classStdprice": 380000,
+                            "classSourceid": "86640d9c-09bb-4b82-b08e-fd0f8eb9bcae",
+                            "classAsertype": "F",
+                            "classAtype": "E",
+                            "classAsertypename": "不过退费",
+                            "classOrdercount": 259
+                        }
+                    ]
+                },
+                {
+                    "subjectName": "法律法规",
+                    "subjectId": "SUBJECT20191126010000000470",
+                    "classCategory": "S",
+                    "classes": [
+                        {
+                            "classId": "CLASS20200701020000000027",
+                            "classCategory": "S",
+                            "classPromotionstatus": "N",
+                            "classBasecount": 259,
+                            "subjectId": "SUBJECT20191126010000000470",
+                            "subjectName": "法律法规",
+                            "className": "2020二级建造师企业无忧班A【三期】法律法规",
+                            "classPrice": null,
+                            "classStdprice": 300000,
+                            "classSourceid": "53bd9111-22a0-4f41-8cd0-e2c0c1dfd726",
+                            "classAsertype": "F",
+                            "classAtype": "E",
+                            "classAsertypename": "不过退费",
+                            "classOrdercount": 264
+                        }
+                    ]
+                },
+                {
+                    "subjectName": "机电实务",
+                    "subjectId": "SUBJECT20191126010000000515",
+                    "classCategory": "S",
+                    "classes": [
+                        {
+                            "classId": "CLASS20200701020000000028",
+                            "classCategory": "S",
+                            "classPromotionstatus": "N",
+                            "classBasecount": 259,
+                            "subjectId": "SUBJECT20191126010000000515",
+                            "subjectName": "机电实务",
+                            "className": "2020二级建造师企业无忧班A【三期】机电实务",
+                            "classPrice": null,
+                            "classStdprice": 380000,
+                            "classSourceid": "432248a0-1f2f-47ba-8fd4-980750f54449",
+                            "classAsertype": "F",
+                            "classAtype": "E",
+                            "classAsertypename": "不过退费",
+                            "classOrdercount": 274
+                        }
+                    ]
+                },
+                {
+                    "subjectName": "市政实务",
+                    "subjectId": "SUBJECT20191126010000000797",
+                    "classCategory": "S",
+                    "classes": [
+                        {
+                            "classId": "CLASS20200701020000000031",
+                            "classCategory": "S",
+                            "classPromotionstatus": "N",
+                            "classBasecount": 259,
+                            "subjectId": "SUBJECT20191126010000000797",
+                            "subjectName": "市政实务",
+                            "className": "2020二级建造师企业无忧班A【三期】市政实务",
+                            "classPrice": null,
+                            "classStdprice": 380000,
+                            "classSourceid": "d9958e3d-4b61-4d5c-8920-969fa63c1e5f",
+                            "classAsertype": "F",
+                            "classAtype": "E",
+                            "classAsertypename": "不过退费",
+                            "classOrdercount": 279
+                        }
+                    ]
+                },
+                {
+                    "subjectName": "公路实务",
+                    "subjectId": "SUBJECT20191126010000001046",
+                    "classCategory": "S",
+                    "classes": [
+                        {
+                            "classId": "CLASS20200701020000000033",
+                            "classCategory": "S",
+                            "classPromotionstatus": "N",
+                            "classBasecount": 259,
+                            "subjectId": "SUBJECT20191126010000001046",
+                            "subjectName": "公路实务",
+                            "className": "2020二级建造师企业无忧班A【三期】公路实务",
+                            "classPrice": null,
+                            "classStdprice": 380000,
+                            "classSourceid": "134fa5fc-e6e4-4c3f-a2ee-927eff6092bc",
+                            "classAsertype": "F",
+                            "classAtype": "E",
+                            "classAsertypename": "不过退费",
+                            "classOrdercount": 263
+                        }
+                    ]
+                },
+                {
+                    "subjectName": "建筑实务",
+                    "subjectId": "SUBJECT20191126010000001114",
+                    "classCategory": "S",
+                    "classes": [
+                        {
+                            "classId": "CLASS20200701020000000034",
+                            "classCategory": "S",
+                            "classPromotionstatus": "N",
+                            "classBasecount": 259,
+                            "subjectId": "SUBJECT20191126010000001114",
+                            "subjectName": "建筑实务",
+                            "className": "2020二级建造师企业无忧班A【三期】建筑实务",
+                            "classPrice": null,
+                            "classStdprice": 380000,
+                            "classSourceid": "a1b52c56-9e7e-4881-a25c-704a0a5d05c7",
+                            "classAsertype": "F",
+                            "classAtype": "E",
+                            "classAsertypename": "不过退费",
+                            "classOrdercount": 271
+                        }
+                    ]
+                }
+            ],
+            "classtypeOrdercount": 3259,
+            "MaxPrice": 980000,
+            "MinPrice": 300000,
+            "stdmaxPrice": 980000,
+            "stdminPrice": 300000,
+            "parentProjectName": "建工学院",
+            "classtypeAuditionstatus": "Y"
+        },
+        "gid": "G2020080112002202000049",
+        "seqno": "2020080112002202000049",
+        "cid": "REQ_6edk7q0fagfklw0s",
+        "timestamp": 1596254422258
+    }
+]

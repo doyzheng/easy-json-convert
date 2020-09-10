@@ -1,0 +1,51 @@
+{
+    "type": "object",
+    "required": [
+        "string",
+        "num",
+        "bool",
+        "empty",
+        "arr",
+        "obj"
+    ],
+    "properties": {
+        "string": {
+            "key": "string",
+            "type": "string",
+            "default": "abc"
+        },
+        "num": {
+            "key": "num",
+            "type": "string",
+            "default": 123456
+        },
+        "bool": {
+            "key": "bool",
+            "type": "string",
+            "default": true
+        },
+        "empty": {
+            "key": "empty",
+            "type": "string",
+            "default": null
+        },
+        "arr": {
+            "key": "arr",
+            "type": "string",
+            "default": [
+                1,
+                2,
+                3,
+                4
+            ]
+        },
+        "obj": {
+            "key": "obj",
+            "type": "object",
+            "default": {
+                "a": 1,
+                "b": 2
+            }
+        }
+    }
+}

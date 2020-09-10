@@ -1,0 +1,43 @@
+{
+    "type": "object",
+    "required": ["string", "num", "bool", "empty", "arr", "obj"],
+
+    "properties": {
+        "string": {
+            "key": "string",
+            "type": "string"
+        },
+
+        "num": {
+            "key": "num",
+            "type": "number"
+        },
+
+        "bool": {
+            "key": "bool",
+            "type": "boolean"
+        },
+
+        "empty": {
+            "key": "empty",
+            "type": null
+        },
+
+        "arr": {
+            "key": "arr",
+            "type": "array",
+            "default": [1, 2, 3, 4],
+            "items": {}
+        },
+
+        "obj": {
+            "key": "obj",
+            "type": "object",
+
+            "default": {
+                "a": 1,
+                "b": 2
+            }
+        }
+    }
+}

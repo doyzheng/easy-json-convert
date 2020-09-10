@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "required": [],
+
+    "properties": {
+        "arr": {
+            "alias": "array",
+            "key": "arr",
+            "type": "array",
+            "items": {}
+        },
+
+        "obj": {
+            "alias": "object",
+            "key": "obj",
+            "type": "object",
+            "required": [],
+            "properties": {}
+        }
+    }
+}

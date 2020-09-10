@@ -1,0 +1,37 @@
+{
+    "string": "abc",
+    "number": "123456789",
+    "boolean": "0",
+    "array": [
+        {
+            "string": "abc",
+            "number": "123"
+        },
+        {
+            "string": "abc",
+            "number": "456"
+        },
+        {
+            "string": "abc",
+            "number": "789"
+        }
+    ],
+    "object": {
+        "string": "abc",
+        "number": "123",
+        "array": [
+            {
+                "string": "abc",
+                "number": "123"
+            },
+            {
+                "string": "abc",
+                "number": "456"
+            },
+            {
+                "string": "abc",
+                "number": "789"
+            }
+        ]
+    }
+}

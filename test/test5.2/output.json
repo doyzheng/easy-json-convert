@@ -1,0 +1,22 @@
+{
+    "arr": [123, {
+        "string": "abc",
+        "number": 123456,
+        "boolean": true,
+        "null": null
+    }, "abc", true, null],
+
+    "obj": {
+        "string": "abc",
+        "number": 123456,
+        "boolean": true,
+        "null": null,
+
+        "array": [123, {
+            "string": "abc",
+            "number": 123456,
+            "boolean": true,
+            "null": null
+        }, "abc", true, null]
+    }
+}
