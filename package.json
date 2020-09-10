@@ -1,5 +1,5 @@
 {
-  "name": "json-magic",
+  "name": "easy-json-convert",
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
