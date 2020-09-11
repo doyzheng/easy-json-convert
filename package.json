@@ -1,31 +1,17 @@
 {
-  "name": "easy-json-convert",
-  "version": "1.0.0",
-  "main": "index.js",
-  "dependencies": {
-    "recast": "^0.19.1"
-  },
-  "files": [
-    "index.js"
-  ],
-  "devDependencies": {
-    "mocha": "^8.0.1"
-  },
-  "scripts": {
-    "test": "mocha"
-  },
-  "author": "",
-  "license": "ISC",
-  "directories": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/doyzheng/json-convert.js.git"
-  },
-  "bugs": {
-    "url": "https://github.com/doyzheng/json-convert.js/issues"
-  },
-  "homepage": "https://github.com/doyzheng/json-convert.js#readme",
-  "description": ""
+    "name": "easy-json-convert",
+    "version": "1.0.0",
+    "main": "index.js",
+    "dependencies": {
+        "recast": "^0.19.1"
+    },
+    "files": [
+        "index.js"
+    ],
+    "devDependencies": {
+        "mocha": "^8.0.1"
+    },
+    "scripts": {
+        "test": "mocha"
+    }
 }

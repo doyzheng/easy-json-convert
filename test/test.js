@@ -17,9 +17,48 @@ require('./test8.2');
 require('./test9');
 require('./test10');
 
-/*var input = require('./test8.1/input');
-var template = require('./test8.1/template');
-var convert = require('../index');
-console.log(convert.utils.formatJson(
-    convert(input, template),
-));*/
+var jsonConvert = require('./../index');
+
+/*
+var input = {
+    'string': 'abc',
+    'number': '123456',
+    'boolean': 1,
+    'null': '',
+    'array': [1, 2, 3, 4],
+    'object': {a: 1, b: 2},
+};
+
+var template = {
+    'string': {
+        type: 'string',
+    },
+    'number': {
+        type: 'number',
+    },
+    'boolean': {
+        type: 'boolean',
+    },
+    'null': {
+        type: 'null',
+    },
+    'array': {
+        type: 'array',
+    },
+    'object': {
+        type: 'object',
+    },
+};
+
+console.log(jsonConvert(input, template));
+
+// 输出数据
+var output = {
+    'string': 'abc',
+    'number': 123456,
+    'boolean': true,
+    'null': null,
+    'array': [1, 2, 3, 4],
+    'object': {a: 1, b: 2},
+};
+*/

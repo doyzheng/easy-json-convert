@@ -1,7 +1,5 @@
 'use strict';
 
-var recast = require('recast');
-
 /**
  * @param {Object} input
  * @param {Object|Schema} schema
@@ -32,6 +30,10 @@ var Context = function(input, schema, options) {
  * 把给定JSON数据，转换成描述对象一致的结构
  * @param {Object} input
  * @param {Object|Schema} schema
+ * @param {Object} options                      全局默认配置项
+ * @param {String} options.requiredSign         标记必须存在的属性标识
+ * @param {String} options.aliasSign            标记别名属性标识
+ * @param {Boolean} options.allRequired         默认全部属性必须存在
  * @param {Object} options                      可选配置项
  * @param {Object} options.defaults             默认取值配置
  * @param {String} options.defaults.string      字符串类型默认值
@@ -186,17 +188,6 @@ var forEach = function(obj, callback) {
 };
 
 /**
- * 格式化json数据
- * @param json
- * @returns {string}
- */
-var formatJson = function(json) {
-    var code = recast.parse('var json = ' + JSON.stringify(json));
-    var data = recast.prettyPrint(code).code;
-    return data.substr(11, data.length - 12);
-};
-
-/**
  * 工具方法
  * @type {{}}
  */
@@ -210,8 +201,7 @@ Context.utils = {
     isEmptyObject: isEmptyObject,
     includes: includes,
     hasOwnProperty: hasOwnProperty,
-    forEach: forEach,
-    formatJson: formatJson,
+    forEach: forEach
 };
 
 /**
