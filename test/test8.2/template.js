@@ -1,4 +1,5 @@
 // 对象嵌套对象
+
 module.exports = {
     'api': 'ordering/classorders/view',
     'result': '000000',
@@ -49,8 +50,10 @@ module.exports = {
             'aiApplyform': {
                 type: 'string',
                 filter(val) {
-                    const convert = this.context.convert;
+                   // const convert = this.context.convert;
+                    console.log('convert', this.context.convert());
 
+                    return;
                     return convert(JSON.parse(val), ({
                         'employeeId@ownerId': {
                             type: 'string',
@@ -77,7 +80,12 @@ module.exports = {
                                 'paymentPatternText@contractPayMethodDes': '一次性支付',
                                 'betFloatInfo': {
                                     'betTarget@category': '1',
-                                    'betTargetAmount@num': '',
+                                    'betTargetAmount@num': {
+                                        type: 'string',
+                                        filter(val) {
+                                            return val;
+                                        },
+                                    },
                                 },
                                 'rewardFloatInfo': {
                                     'betPunishUnit@category': '1',

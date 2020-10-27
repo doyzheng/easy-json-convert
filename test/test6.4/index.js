@@ -7,6 +7,7 @@ var jsonSchema = convert.schema;
 var filterJson = convert.convert;
 var util = require('../utils');
 
+
 describe('6.2多层对象数组，使用allRequired参数，aliasSign指定别名，保证输出数据和模板的一致性', () => {
 
     it('输出的模板描述对象是否正确', () => {

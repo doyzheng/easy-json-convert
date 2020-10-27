@@ -1,4 +1,4 @@
-require('./test1');
+/*require('./test1');
 require('./test2');
 require('./test3');
 require('./test4.1');
@@ -15,8 +15,8 @@ require('./test7');
 require('./test8.1');
 require('./test8.2');
 require('./test9');
-require('./test10');
-
+require('./test10');*/
+require('./test8.2');
 var jsonConvert = require('./../index');
 
 /*
