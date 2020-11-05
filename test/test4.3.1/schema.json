@@ -4,67 +4,67 @@
 
     "properties": {
         "string": {
-            "key": "string",
+            "name": "string",
             "type": "string"
         },
 
         "num": {
-            "key": "num",
+            "name": "num",
             "type": "number"
         },
 
         "bool": {
-            "key": "bool",
+            "name": "bool",
             "type": "boolean"
         },
 
         "empty": {
-            "key": "empty",
+            "name": "empty",
             "type": null
         },
 
         "arr": {
-            "key": "arr",
+            "name": "arr",
             "type": "array",
             "default": [1, 2, 3, 4],
             "items": {}
         },
 
         "obj": {
-            "key": "obj",
+            "name": "obj",
             "type": "object",
             "required": ["string", "num", "bool", "empty", "arr", "obj2"],
 
             "properties": {
                 "string": {
-                    "key": "string",
+                    "name": "string",
                     "type": "string",
                     "default": "defStr"
                 },
 
                 "num": {
-                    "key": "num",
+                    "name": "num",
                     "type": "number"
                 },
 
                 "bool": {
-                    "key": "bool",
+                    "name": "bool",
                     "type": "boolean"
                 },
 
                 "empty": {
-                    "key": "empty",
+                    "name": "empty",
                     "type": null
                 },
 
                 "arr": {
-                    "key": "arr",
+                    "name": "arr",
                     "type": "array",
                     "items": {}
                 },
 
                 "obj2": {
-                    "key": "obj2",
+                    "name": "obj2",
                     "type": "object",
                     "required": [],
                     "properties": {}

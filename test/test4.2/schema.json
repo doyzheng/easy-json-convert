@@ -4,33 +4,33 @@
 
     "properties": {
         "string": {
-            "key": "string",
+            "name": "string",
             "type": "string"
         },
 
         "number": {
-            "key": "number",
+            "name": "number",
             "type": "number"
         },
 
         "boolean": {
-            "key": "boolean",
+            "name": "boolean",
             "type": "boolean"
         },
 
         "null": {
-            "key": "null",
+            "name": "null",
             "type": null
         },
 
         "array": {
-            "key": "array",
+            "name": "array",
             "type": "array",
             "items": {}
         },
 
         "object": {
-            "key": "object",
+            "name": "object",
             "type": "object",
             "required": [],
             "properties": {}

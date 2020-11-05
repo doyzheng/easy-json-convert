@@ -10,29 +10,29 @@
     ],
     "properties": {
         "str": {
-            "key": "str",
+            "name": "str",
             "type": "string"
         },
         "num": {
-            "key": "num",
+            "name": "num",
             "type": "number"
         },
         "bool": {
-            "key": "bool",
+            "name": "bool",
             "type": "boolean"
         },
         "empty": {
-            "key": "empty",
+            "name": "empty",
             "type": null
         },
         "arr": {
-            "key": "arr",
+            "name": "arr",
             "type": "array",
             "items": {}
         },
         "obj": {
             "required": [],
-            "key": "obj",
+            "name": "obj",
             "type": "object",
             "properties": {}
         }

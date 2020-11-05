@@ -50,10 +50,7 @@ module.exports = {
             'aiApplyform': {
                 type: 'string',
                 filter(val) {
-                   // const convert = this.context.convert;
-                    console.log('convert', this.context.convert());
-
-                    return;
+                    var convert = this.convert;
                     return convert(JSON.parse(val), ({
                         'employeeId@ownerId': {
                             type: 'string',
@@ -80,12 +77,7 @@ module.exports = {
                                 'paymentPatternText@contractPayMethodDes': '一次性支付',
                                 'betFloatInfo': {
                                     'betTarget@category': '1',
-                                    'betTargetAmount@num': {
-                                        type: 'string',
-                                        filter(val) {
-                                            return val;
-                                        },
-                                    },
+                                    'betTargetAmount@num': '',
                                 },
                                 'rewardFloatInfo': {
                                     'betPunishUnit@category': '1',

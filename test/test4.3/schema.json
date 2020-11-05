@@ -4,34 +4,34 @@
 
     "properties": {
         "string": {
-            "key": "string",
+            "name": "string",
             "type": "string"
         },
 
         "num": {
-            "key": "num",
+            "name": "num",
             "type": "number"
         },
 
         "bool": {
-            "key": "bool",
+            "name": "bool",
             "type": "boolean"
         },
 
         "empty": {
-            "key": "empty",
+            "name": "empty",
             "type": null
         },
 
         "arr": {
-            "key": "arr",
+            "name": "arr",
             "type": "array",
             "default": [1, 2, 3, 4],
             "items": {}
         },
 
         "obj": {
-            "key": "obj",
+            "name": "obj",
             "type": "object",
 
             "default": {

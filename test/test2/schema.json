@@ -5,38 +5,38 @@
     "properties": {
         "str": {
             "alias": "string",
-            "key": "str",
+            "name": "str",
             "type": "string"
         },
 
         "num": {
             "alias": "number",
-            "key": "num",
+            "name": "num",
             "type": "number"
         },
 
         "bool": {
             "alias": "boolean",
-            "key": "bool",
+            "name": "bool",
             "type": "boolean"
         },
 
         "empty": {
             "alias": "null",
-            "key": "empty",
+            "name": "empty",
             "type": null
         },
 
         "arr": {
             "alias": "array",
-            "key": "arr",
+            "name": "arr",
             "type": "array",
             "items": {}
         },
 
         "obj": {
             "alias": "object",
-            "key": "obj",
+            "name": "obj",
             "type": "object",
             "required": [],
             "properties": {}

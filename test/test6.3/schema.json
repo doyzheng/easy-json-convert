@@ -4,22 +4,22 @@
 
     "properties": {
         "api": {
-            "key": "api",
+            "name": "api",
             "type": "string"
         },
 
         "result": {
-            "key": "result",
+            "name": "result",
             "type": "string"
         },
 
         "msg": {
-            "key": "msg",
+            "name": "msg",
             "type": "string"
         },
 
         "data": {
-            "key": "data",
+            "name": "data",
             "type": "array",
 
             "items": {
@@ -28,17 +28,17 @@
 
                 "properties": {
                     "id": {
-                        "key": "id",
+                        "name": "id",
                         "type": "string"
                     },
 
                     "name": {
-                        "key": "name",
+                        "name": "name",
                         "type": "string"
                     },
 
                     "subList": {
-                        "key": "subList",
+                        "name": "subList",
                         "type": "array",
 
                         "items": {
@@ -47,17 +47,17 @@
 
                             "properties": {
                                 "id": {
-                                    "key": "id",
+                                    "name": "id",
                                     "type": "string"
                                 },
 
                                 "name": {
-                                    "key": "name",
+                                    "name": "name",
                                     "type": "string"
                                 },
 
                                 "subList": {
-                                    "key": "subList",
+                                    "name": "subList",
                                     "type": "array",
                                     "items": {}
                                 }
@@ -69,17 +69,17 @@
         },
 
         "seqno": {
-            "key": "seqno",
+            "name": "seqno",
             "type": "string"
         },
 
         "cid": {
-            "key": "cid",
+            "name": "cid",
             "type": "string"
         },
 
         "timestamp": {
-            "key": "timestamp",
+            "name": "timestamp",
             "type": "number"
         }
     }

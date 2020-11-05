@@ -16,8 +16,8 @@ module.exports = [
             '*introduction_app@classtypeIntroduceapp': {
                 type: 'string',
                 filter: function(val) {
-                    const schema = this.context.schema;
-                    const convert = this.context.convert;
+                    const schema = this.schema;
+                    const convert = this.convert;
                     const list = JSON.parse(val || '[]');
                     return convert(list, schema([
                         {

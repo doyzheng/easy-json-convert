@@ -1,0 +1,175 @@
+{
+    "api": "ordering/classorders/view",
+    "result": "000000",
+    "msg": "",
+
+    "data": {
+        "order": {
+            "coReferusermobile": "",
+            "sourceOrderid": null,
+            "sourceOrderno": null,
+            "sourceClassordertype": null,
+            "orderId": "732865622827859969",
+            "orderNo": "ZC2020071515462046988148",
+            "brandId": "YOULU",
+            "userId": "CORP20200714020000000006",
+            "creatorId": "USER20181023010000005660",
+            "coOwnerid": "USER20200324130000005223",
+            "coOwnerdptid": "DPT20191127010000000403",
+            "coOwnerschoolid": "SCHOOL20190411010000000019",
+            "orderSource": "OP",
+            "orderSourcedes": "运营平台",
+            "orderCreator": "USER20181023010000005660",
+            "orderCreateddate": "2020-07-15 15:46:20",
+            "orderMemo": "",
+            "coSubtype": "",
+            "coType": "GEN",
+            "coTypename": "正常订单",
+            "coGivesituation": "",
+            "coRelatedorderno": "",
+            "coReferuserid": "",
+            "coReferorderno": "",
+            "coSubtypedes": "",
+            "coGivesituationdes": "",
+            "orderApprovalnode": "",
+            "aiId": "732865622827859968",
+            "orderTotalamount": 1200,
+            "orderPayamount": 1200,
+            "coIntoamount": 0,
+            "orderPaystatus": "A",
+            "coGoodsamountstatus": "",
+            "orderBusinesstype": "O",
+            "coAssistservice": null,
+            "coServiceschoolid": null,
+            "attachmentMaterials": [],
+            "coOwnername": "叶彦飞",
+            "orderCreatorname": "admin",
+            "schoolName": "总部",
+            "serviceSchoolName": null,
+            "coOwnerdptname": "网站微服务研发部[人事系统]",
+            "aiApplyform": "{\"ownerId\":\"USER20200324130000005223\",\"ownerDptId\":\"DPT20191127010000000403\",\"ownerSchoolId\":\"SCHOOL20190411010000000019\",\"contracts\":[{\"contractNo\":\"1111111\",\"contractName\":\"测试\",\"contractStatus\":\"Y\",\"contractDate\":\"2020-07-01~2020-07-31\",\"contractAmount\":\"1200\",\"contractTeachMethod\":\"41\",\"contractTeachMethodDes\":\"网络\",\"contractService\":\"11\",\"contractServiceDes\":\"不重读不退费\",\"contractServiceCode\":\"\",\"contractServiceCodeDes\":\"\",\"contractPayMethod\":\"31\",\"contractPayMethodDes\":\"一次性支付\",\"betFloatInfo\":{\"category\":\"1\",\"num\":\"\"},\"rewardFloatInfo\":{\"category\":\"1\",\"num\":\"\"},\"contractPayMaxFloat\":\"\"}],\"planFile\":\"\"}",
+            "aiApprovalstatus": "PAS",
+            "custName": "摩托车",
+            "custMobile": null,
+            "coReferusername": "",
+            "coReferusermobilestr": ""
+        },
+
+        "classes": [{
+            "classService": {
+                "classAtype": "E",
+                "classAtypeName": "电子协议",
+                "classAsertype": "R",
+                "classAsertypeName": "重读",
+                "classArepeatcount": 0,
+                "classArepeatbookamount": null,
+                "classArefundtype": null,
+                "classArefundtypeName": "",
+                "csRefundableamount": null,
+                "classsubjectArefundscale": 0,
+                "csAgreementurl": null
+            },
+
+            "giveClasses": [],
+            "sumAmount": 1200,
+            "quantity": 12,
+            "orderitemOperationtype": null,
+            "oiId": "732865623335370752",
+            "projectId": "PROJECT20191126010000000398",
+            "projectName": "初级安全工程师",
+            "productId": "CLASSTYPE20200320010000000101",
+            "productName": "2020初级安全工程师化工安全2科钻石班",
+            "skuId": "CLASS20200320010000000101",
+            "skuName": "2020初级安全工程师化工安全2科钻石班",
+            "skuAmount": 388000,
+            "skuMindiscount": 0.5,
+            "oiAmount": 100,
+            "classSendstatus": "Y",
+            "classGoodsstatus": null,
+            "oiMainorderitemid": "",
+            "pypYear": 2020,
+            "pypSeq": 1,
+            "classTeachmethod": "N",
+            "classTeachmethodName": "网络课",
+            "coiOpendate": "",
+            "classExpiredate": "2020-12-31 00:00:00",
+            "coiClassstatus": "GEND",
+            "coiClassstatusDes": "正常",
+
+            "subjects": [{
+                "subjectId": "SUBJECT20191212010000000012",
+                "subjectName": "化工安全技术",
+                "subjectNature": null,
+                "oiId": ""
+            }, {
+                "subjectId": "SUBJECT20191126010000000835",
+                "subjectName": "法规",
+                "subjectNature": null,
+                "oiId": ""
+            }],
+
+            "goods": []
+        }],
+
+        "receipts": [{
+            "receiptId": "732865623406673920",
+            "receiptNo": "IN2020071515462060673375",
+            "recMode": "A",
+            "recModename": "支付宝",
+            "accountCode": "65",
+            "accountName": "北京-网站在线支付-对公支付宝",
+            "traderecordChanneltradeno": "20200715000000002",
+            "receiptAmount": 1200,
+            "receiptTradedate": "2020-07-15 00:00:00",
+            "receiptHandler": "USER20191128590000034554",
+            "receiptHandlerName": "尚冰倩",
+
+            "receiptOwnerships": [{
+                "receiptId": "732865623406673920",
+                "roOwnerid": "USER20191128590000034554",
+                "roOwnername": "尚冰倩",
+                "roOwnerschoolid": "SCHOOL20190411010000000175",
+                "roOwnerschoolname": "郑州",
+                "roOwnerdptid": "DPT20191127010000000509",
+                "roOwnerdptname": "销售一组[人事系统]"
+            }],
+
+            "receiptMemo": null,
+            "materialUrls": ["2020/07/15/15947991770360871.png"],
+            "receiptApprstatus": "PAS",
+            "receiptUseway": "OFF",
+            "receiptCustomeraccount": "",
+            "receiptCustomercardbank": "",
+            "receiptCustomercardholdername": null,
+            "sourceOrderReceiptNos": []
+        }],
+
+        "orderAddress": {
+            "oaName": "",
+            "oaPhone": "",
+            "oaPhonestr": null,
+            "oaProvincename": "",
+            "oaProvince": "",
+            "oaCityname": "",
+            "oaCity": "",
+            "oaDistrictname": "",
+            "oaDistrict": "",
+            "oaAddress": ""
+        },
+
+        "agreement": {
+            "agreementNo": null,
+            "agreementUserinfoconfirmstatus": "N",
+            "agreementConfirmedtime": null,
+            "agreementStatus": "N",
+            "agreementStatusname": "未签",
+            "agreementNeedconfirmstatus": "Y",
+            "agreementVersion": "EV2"
+        }
+    },
+
+    "gid": "G2020080116445901000002",
+    "seqno": "2020080116445901000002",
+    "cid": "REQ_g0parn6aqcsi5d06",
+    "timestamp": 1596271499561
+}
