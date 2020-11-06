@@ -353,7 +353,7 @@
         };
 
         /**
-         * 绑定上下文执行环境，方便在过滤器中使用Convert,Schema
+         * 上下文执行环境，方便在过滤器中使用convert,Schema方法
          */
         var context = new Context;
 
