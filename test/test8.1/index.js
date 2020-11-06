@@ -11,6 +11,8 @@ describe('8.1直接使用jsonConvert方法快速转换，第一个参数是输�
         util.deepEqualOutput(jsonConvert(input, template), output, __dirname);
     });
 
+    //console.log(util.formatJson(jsonConvert.schema(template)));
+
 });
 
 

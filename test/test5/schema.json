@@ -1,67 +1,58 @@
 {
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "",
+    "description": "",
     "type": "object",
     "required": [],
-
     "properties": {
         "string": {
-            "name": "string",
+            "@name": "string",
             "type": "string"
         },
-
         "number": {
-            "name": "number",
+            "@name": "number",
             "type": "number"
         },
-
         "boolean": {
-            "name": "boolean",
+            "@name": "boolean",
             "type": "boolean"
         },
-
         "null": {
-            "name": "null",
+            "@name": "null",
             "type": null
         },
-
         "array": {
-            "name": "array",
+            "@name": "array",
             "type": "array",
-
             "items": {
                 "type": "number"
             }
         },
-
         "object": {
-            "name": "object",
+            "@name": "object",
             "type": "object",
             "required": [],
-
             "properties": {
                 "string": {
-                    "name": "string",
+                    "@name": "string",
                     "type": "string"
                 },
-
                 "number": {
-                    "name": "number",
+                    "@name": "number",
                     "type": "number"
                 },
-
                 "boolean": {
-                    "name": "boolean",
+                    "@name": "boolean",
                     "type": "boolean"
                 },
-
                 "null": {
-                    "name": "null",
+                    "@name": "null",
                     "type": null
                 },
-
                 "array": {
-                    "name": "array",
+                    "@name": "array",
                     "type": "array",
-
                     "items": {
                         "type": "number"
                     }

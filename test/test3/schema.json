@@ -1,4 +1,8 @@
 {
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "",
+    "description": "",
     "type": "object",
     "required": [
         "str",
@@ -10,30 +14,30 @@
     ],
     "properties": {
         "str": {
-            "name": "str",
+            "@name": "str",
             "type": "string"
         },
         "num": {
-            "name": "num",
+            "@name": "num",
             "type": "number"
         },
         "bool": {
-            "name": "bool",
+            "@name": "bool",
             "type": "boolean"
         },
         "empty": {
-            "name": "empty",
+            "@name": "empty",
             "type": null
         },
         "arr": {
-            "name": "arr",
+            "@name": "arr",
             "type": "array",
             "items": {}
         },
         "obj": {
-            "required": [],
-            "name": "obj",
+            "@name": "obj",
             "type": "object",
+            "required": [],
             "properties": {}
         }
     }

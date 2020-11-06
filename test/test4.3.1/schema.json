@@ -1,70 +1,81 @@
 {
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "",
+    "description": "",
     "type": "object",
-    "required": ["string", "num", "bool", "empty", "arr", "obj"],
-
+    "required": [
+        "string",
+        "num",
+        "bool",
+        "empty",
+        "arr",
+        "obj"
+    ],
     "properties": {
         "string": {
-            "name": "string",
+            "@name": "string",
             "type": "string"
         },
-
         "num": {
-            "name": "num",
+            "@name": "num",
             "type": "number"
         },
-
         "bool": {
-            "name": "bool",
+            "@name": "bool",
             "type": "boolean"
         },
-
         "empty": {
-            "name": "empty",
+            "@name": "empty",
             "type": null
         },
-
         "arr": {
-            "name": "arr",
+            "@name": "arr",
             "type": "array",
-            "default": [1, 2, 3, 4],
+            "default": [
+                1,
+                2,
+                3,
+                4
+            ],
             "items": {}
         },
-
         "obj": {
-            "name": "obj",
+            "@name": "obj",
             "type": "object",
-            "required": ["string", "num", "bool", "empty", "arr", "obj2"],
-
+            "required": [
+                "string",
+                "num",
+                "bool",
+                "empty",
+                "arr",
+                "obj2"
+            ],
             "properties": {
                 "string": {
-                    "name": "string",
+                    "@name": "string",
                     "type": "string",
                     "default": "defStr"
                 },
-
                 "num": {
-                    "name": "num",
+                    "@name": "num",
                     "type": "number"
                 },
-
                 "bool": {
-                    "name": "bool",
+                    "@name": "bool",
                     "type": "boolean"
                 },
-
                 "empty": {
-                    "name": "empty",
+                    "@name": "empty",
                     "type": null
                 },
-
                 "arr": {
-                    "name": "arr",
+                    "@name": "arr",
                     "type": "array",
                     "items": {}
                 },
-
                 "obj2": {
-                    "name": "obj2",
+                    "@name": "obj2",
                     "type": "object",
                     "required": [],
                     "properties": {}

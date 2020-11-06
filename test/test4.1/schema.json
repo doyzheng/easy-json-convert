@@ -1,4 +1,8 @@
 {
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "",
+    "description": "",
     "type": "object",
     "required": [
         "string",
@@ -10,27 +14,27 @@
     ],
     "properties": {
         "string": {
-            "name": "string",
+            "@name": "string",
             "type": "string",
             "default": "abc"
         },
         "num": {
-            "name": "num",
+            "@name": "num",
             "type": "string",
             "default": 123456
         },
         "bool": {
-            "name": "bool",
+            "@name": "bool",
             "type": "string",
             "default": true
         },
         "empty": {
-            "name": "empty",
+            "@name": "empty",
             "type": "string",
             "default": null
         },
         "arr": {
-            "name": "arr",
+            "@name": "arr",
             "type": "string",
             "default": [
                 1,
@@ -40,7 +44,7 @@
             ]
         },
         "obj": {
-            "name": "obj",
+            "@name": "obj",
             "type": "object",
             "default": {
                 "a": 1,

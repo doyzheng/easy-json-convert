@@ -1,43 +1,9 @@
 {
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "",
+    "description": "",
     "type": "object",
-    "required": ["string", "num", "bool", "empty", "arr", "obj"],
-
-    "properties": {
-        "string": {
-            "name": "string",
-            "type": "string"
-        },
-
-        "num": {
-            "name": "num",
-            "type": "number"
-        },
-
-        "bool": {
-            "name": "bool",
-            "type": "boolean"
-        },
-
-        "empty": {
-            "name": "empty",
-            "type": null
-        },
-
-        "arr": {
-            "name": "arr",
-            "type": "array",
-            "default": [1, 2, 3, 4],
-            "items": {}
-        },
-
-        "obj": {
-            "name": "obj",
-            "type": "object",
-
-            "default": {
-                "a": 1,
-                "b": 2
-            }
-        }
-    }
+    "required": [],
+    "properties": {}
 }

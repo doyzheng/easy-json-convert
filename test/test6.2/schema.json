@@ -1,63 +1,71 @@
 {
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "",
+    "description": "",
     "type": "object",
-    "required": ["api", "result", "msg", "data", "seqno", "cid", "timestamp"],
-
+    "required": [
+        "api",
+        "result",
+        "msg",
+        "data",
+        "seqno",
+        "cid",
+        "timestamp"
+    ],
     "properties": {
         "api": {
-            "name": "api",
+            "@name": "api",
             "type": "string"
         },
-
         "result": {
-            "name": "result",
+            "@name": "result",
             "type": "string"
         },
-
         "msg": {
-            "name": "msg",
+            "@name": "msg",
             "type": "string"
         },
-
         "data": {
-            "name": "data",
+            "@name": "data",
             "type": "array",
-
             "items": {
                 "type": "object",
-                "required": ["id", "name", "subList"],
-
+                "required": [
+                    "id",
+                    "name",
+                    "subList"
+                ],
                 "properties": {
                     "id": {
-                        "name": "id",
+                        "@name": "id",
                         "type": "string"
                     },
-
                     "name": {
-                        "name": "name",
+                        "@name": "name",
                         "type": "string"
                     },
-
                     "subList": {
-                        "name": "subList",
+                        "@name": "subList",
                         "type": "array",
-
                         "items": {
                             "type": "object",
-                            "required": ["id", "name", "subList"],
-
+                            "required": [
+                                "id",
+                                "name",
+                                "subList"
+                            ],
                             "properties": {
                                 "id": {
-                                    "name": "id",
+                                    "@name": "id",
                                     "type": "string"
                                 },
-
                                 "name": {
-                                    "name": "name",
+                                    "@name": "name",
                                     "type": "string"
                                 },
-
                                 "subList": {
-                                    "name": "subList",
+                                    "@name": "subList",
                                     "type": "array",
                                     "items": {}
                                 }
@@ -67,19 +75,16 @@
                 }
             }
         },
-
         "seqno": {
-            "name": "seqno",
+            "@name": "seqno",
             "type": "string"
         },
-
         "cid": {
-            "name": "cid",
+            "@name": "cid",
             "type": "string"
         },
-
         "timestamp": {
-            "name": "timestamp",
+            "@name": "timestamp",
             "type": "number"
         }
     }

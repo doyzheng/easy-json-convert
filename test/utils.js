@@ -34,9 +34,7 @@ function writeFileSync(filename, data) {
  * @returns {string}
  */
 function formatJson(json) {
-    var code = recast.parse('var json = ' + JSON.stringify(json));
-    var data = recast.prettyPrint(code).code;
-    return data.substr(11, data.length - 12);
+    return JSON.stringify(json, null, 4);
 }
 
 /**
