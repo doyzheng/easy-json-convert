@@ -1,38 +1,43 @@
 {
-  "name": "easy-json-convert",
-  "version": "1.0.1",
-  "main": "index.js",
-  "dependencies": {
-    "recast": "^0.19.1",
-    "rollup": "^2.33.1"
-  },
-  "files": [
-    "index.js",
-    "test"
-  ],
-  "devDependencies": {
-    "mocha": "^8.0.1"
-  },
-  "scripts": {
-    "test": "rollup src/index.js -o index.js & mocha"
-  },
-  "description": "```\r npm install easy-json-convert\r ```",
-  "directories": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/doyzheng/easy-json-convert.git"
-  },
-  "keywords": [
-    "json",
-    "schema",
-    "convert"
-  ],
-  "author": "doyzheng",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/doyzheng/easy-json-convert/issues"
-  },
-  "homepage": "https://github.com/doyzheng/easy-json-convert#readme"
+    "name": "easy-json-convert",
+    "version": "1.0.1",
+    "main": "index.js",
+    "dependencies": {
+        "babel-preset-es2015": "^6.24.1",
+        "recast": "^0.19.1",
+        "rollup": "^2.33.1",
+        "rollup-plugin-babel": "^4.4.0"
+    },
+    "files": [
+        "index.js",
+        "test"
+    ],
+    "devDependencies": {
+        "babel-plugin-external-helpers": "^6.22.0",
+        "mocha": "^8.0.1",
+        "rollup-plugin-uglify": "^6.0.4"
+    },
+    "scripts": {
+        "test": "mocha",
+        "build:umd": "rollup src/index.js -f umd -n json-convert -o index.js & mocha"
+    },
+    "description": "```\r npm install easy-json-convert\r ```",
+    "directories": {
+        "test": "test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/doyzheng/easy-json-convert.git"
+    },
+    "keywords": [
+        "json",
+        "schema",
+        "convert"
+    ],
+    "author": "doyzheng",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/doyzheng/easy-json-convert/issues"
+    },
+    "homepage": "https://github.com/doyzheng/easy-json-convert#readme"
 }

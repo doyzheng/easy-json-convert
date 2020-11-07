@@ -11,10 +11,10 @@ import {
     isObjectSchema,
     isArraySchema,
     merge,
-    getSchemaAttribute,
 } from './utils';
 
 import Schema from './schema';
+import Context from './context';
 
 /**
  * 把给定JSON数据，转换成描述对象一致的结构
@@ -36,12 +36,8 @@ import Schema from './schema';
  * @param {Function} options.filters.object     对象类型转换方法，默认内部处理
  * @return {Array|Object}
  */
-export default function Convert(input, schema, options) {
+function Convert(input, schema, options) {
 
-    /**
-     * 覆盖配置
-     * @type {*}
-     */
     options = merge({
         // 默认返回值
         defaults: {
@@ -124,13 +120,14 @@ export default function Convert(input, schema, options) {
      * @returns {String}
      */
     var getInputKey = function(schema) {
-        return getSchemaAttribute(schema, 'alias') || getSchemaAttribute(schema, 'name');
+        return Schema.getAttribute(schema, 'alias') || Schema.getAttribute(schema, 'name');
     };
 
     /**
+     * 绑定上下文执行环境，方便在过滤器中使用Convert,Schema
      * 上下文执行环境，方便在过滤器中使用convert,Schema方法
      */
-    var context = this;
+    var context = new Context;
 
     /**
      * 根据描述对象获取输入值
@@ -145,16 +142,11 @@ export default function Convert(input, schema, options) {
         if (hasOwnProperty(input, key)) {
 
             // 处理枚举值
-            handleEnums(input, schema);
-
-            // 使用自定义过滤器返回数据
-            var filter = getSchemaAttribute(schema, 'filter');
-            if (isFunction(filter)) {
-                return filter.call(context, input[key], schema);
+            if (isArray(schema.enums)) {
+                handleEnums(input, schema);
             }
 
-            // 使用默认过滤器
-            return filters(input[key], schema.type);
+            return handleFilter(input, schema);
         }
 
         // 未定义
@@ -167,19 +159,28 @@ export default function Convert(input, schema, options) {
      * @param schema
      */
     var handleEnums = function(input, schema) {
-        var enums = getSchemaAttribute(schema, 'enums');
-        if (!isArray(enums)) {
-            return;
-        }
-
         var key = getInputKey(schema);
-        for (var k in enums) {
-            var item = enums[k];
+        for (var k in schema.enums) {
+            var item = schema.enums[k];
             if (item.name === input[key]) {
                 input[key] = item.value;
                 return;
             }
         }
+    };
+
+    var handleFilter = function(input, schema) {
+        var key = getInputKey(schema);
+        var value = input[key];
+
+        // 使用自定义过滤器返回数据
+        var filter = Schema.getAttribute(schema, 'filter') || options.filters[schema.type];
+        if (isFunction(filter)) {
+            return filter.call(context, value, input, schema);
+        }
+
+        // 使用默认过滤器
+        return value;
     };
 
     /**
@@ -316,3 +317,5 @@ export default function Convert(input, schema, options) {
 
     return parse(input, schema);
 }
+
+export default Convert;

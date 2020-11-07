@@ -1,3 +1,12 @@
+import {
+    isSchema,
+    isObject,
+    isArray,
+    includes,
+    merge,
+    getType,
+} from './utils';
+
 /**
  * 解析json，转换成可描述对象
  * @param {Object} jsonTemplate         json模板
@@ -11,149 +20,204 @@
  */
 function Schema(jsonTemplate, options) {
 
-    this.title = '';
-    this.description = '';
-    this.requiredSign = '*';
-    this.aliasSign = '@';
-    this.allRequired = false;
+    options = merge({
+        title: '',
+        description: '',
+        requiredSign: '*',
+        aliasSign: '@',
+        allRequired: false,
+    }, options);
 
-    // 标准结构
-    var baseSchema = {
-        'id': 'http://json-schema.org/draft-04/schema#',
-        '$schema': 'http://json-schema.org/draft-04/schema#',
-        'title': this.title,
-        'description': this.description,
+    /**
+     * 解析json格式为json-schema
+     * @param {Object} json
+     * @param {Object} schema
+     * @return {Object}
+     */
+    var parse = function(json, schema) {
+        if (json === undefined) {
+            return;
+        }
+        schema = schema || {};
+        // 解析数组
+        if (isArray(json)) {
+            parseArray(json, schema);
+        }
+        // 解析对象
+        else if (isObject(json)) {
+            parseObject(json, schema);
+        }
+        else {
+            schema.type = getType(json);
+        }
+        return schema;
     };
 
-    return Object.assign(baseSchema, this.parse(jsonTemplate));
+    /**
+     * 处理结构
+     * @param {Object} json
+     * @param {Object} schema
+     */
+    var handleSchema = function(json, schema) {
+        merge(schema, json);
+        if (schema.type === 'object') {
+            delete schema.properties;
+            if (json.properties) {
+                parse(json.properties, schema);
+            }
+        }
+        if (schema.type === 'array') {
+            delete schema.items;
+            schema.items = {};
+            if (json.items) {
+                parse(json.items, schema.items);
+            }
+        }
+    };
+
+    /**
+     * 处理数组
+     * @param {Array} arr
+     * @param {Object} schema
+     */
+    var parseArray = function(arr, schema) {
+        schema.type = 'array';
+        var props = schema.items = {};
+        if (arr.length) {
+            parse(arr[0], props);
+        }
+    };
+
+    /**
+     * 处理对象类型
+     * @param {Object} json
+     * @param {Object} schema
+     */
+    var parseObject = function(json, schema) {
+        if (isSchema(json)) {
+            return handleSchema(json, schema);
+        }
+
+        schema.type = 'object';
+        schema.required = [];
+        schema.properties = {};
+
+        for (var key in json) {
+            if (!json.hasOwnProperty(key)) {
+                continue;
+            }
+
+            var newKey = key,
+                value = json[newKey],
+                curSchema = schema.properties[newKey] = {},
+                aliasSign = options.aliasSign,
+                requiredSign = options.requiredSign,
+                allRequired = options.allRequired;
+
+            /** 使用约定符号指定别名例如：*user_id@uid **/
+            var alias = '';
+            var aliasIndex = newKey.indexOf(aliasSign);
+            if (aliasIndex !== -1) {
+                delete schema.properties[newKey];// 删除原属性结构信息
+                // 标识符号左边为原名右边为别名
+                alias = newKey.substr(aliasIndex + aliasSign.length);
+                newKey = newKey.substr(0, aliasIndex);
+                curSchema = schema.properties[newKey] = {};
+            }
+
+            /** 使用约定符号标记必须项例如：*user_id **/
+            var existRequiredSign = newKey[0] === requiredSign;
+            if (existRequiredSign) {
+                delete schema.properties[newKey];// 删除原属性结构信息
+                newKey = newKey.substr(1);// 去掉前面的标记符号
+                curSchema = schema.properties[newKey] = {};// 清空上级属性列表
+                schema.required.push(newKey);// 必须项放入上级schema.required中
+            }
+            // 如果配置了全部属性为必须项
+            if (allRequired) {
+                // 避免重复添加
+                if (!existRequiredSign) {
+                    schema.required.push(newKey);
+                }
+            }
+
+            // 如果存在别名，在当前schema.alias属性记录
+            if (alias) {
+                curSchema.alias = alias;
+            }
+
+            // 记录当前节点对应的key
+            curSchema.name = newKey;
+
+            normAttribute(curSchema);
+
+            parse(value, curSchema);
+        }
+    };
+
+    var normAttribute = function(schema) {
+        for (var name in schema) {
+            if (!schema.hasOwnProperty(name)) {
+                continue;
+            }
+
+            if (!includes(schema.attributes, name)) {
+                schema['@' + name] = schema[name];
+                delete schema[name];
+            }
+        }
+        return schema;
+    };
+
+    var jsonSchema = Object.assign({
+        'title': options.title,
+        'description': options.description,
+    }, Schema.baseSchema);
+
+    return Object.assign(jsonSchema, parse(jsonTemplate));
 }
 
+// 标准结构
+Schema.baseSchema = {
+    'id': 'http://json-schema.org/draft-04/schema#',
+    '$schema': 'http://json-schema.org/draft-04/schema#',
+    'title': '',
+    'description': '',
+};
+
 /**
- * 解析json格式为json-schema
- * @param {Object} json
+ * 设置schema结构属性值，如果属性名不属于标准schema，则添加@作为属性名前缀
  * @param {Object} schema
- * @return {Object}
+ * @param {String} name
+ * @param {*} value
+ * @returns {*}
  */
-Schema.prototype.parse = function(json, schema) {
-    if (json === undefined) {
-        return;
-    }
-    schema = schema || {};
-    // 解析数组
-    if (isArray(json)) {
-        this.parseArray(json, schema);
-    }
-    // 解析对象
-    else if (isObject(json)) {
-        this.parseObject(json, schema);
+Schema.setAttribute = function(schema, name, value) {
+    if (includes(this.attributes, name)) {
+        schema[name] = value;
     }
     else {
-        schema.type = getType(json);
+        schema['@' + name] = value;
     }
+
     return schema;
 };
 
 /**
- * 处理结构
- * @param {Object} json
+ * 获取schema结构属性值，如果属性名不属于标准schema，则添加@作为属性名前缀
  * @param {Object} schema
+ * @param {String} name
+ * @returns {*}
  */
-Schema.prototype.handleSchema = function(json, schema) {
-    merge(schema, json);
-    if (schema.type === 'object') {
-        delete schema.properties;
-        if (json.properties) {
-            this.parse(json.properties, schema);
-        }
+Schema.getAttribute = function(schema, name) {
+    if (includes(this.attributes, name)) {
+        return schema[name];
     }
-    if (schema.type === 'array') {
-        delete schema.items;
-        schema.items = {};
-        if (json.items) {
-            this.parse(json.items, schema.items);
-        }
-    }
+
+    return schema['@' + name];
 };
 
-/**
- * 处理数组
- * @param {Array} arr
- * @param {Object} schema
- */
-Schema.prototype.parseArray = function(arr, schema) {
-    schema.type = 'array';
-    var props = schema.items = {};
-    if (arr.length) {
-        this.parse(arr[0], props);
-    }
-};
-
-/**
- * 处理对象类型
- * @param {Object} json
- * @param {Object} schema
- */
-Schema.prototype.parseObject = function(json, schema) {
-    if (isSchema(json)) {
-        return this.handleSchema(json, schema);
-    }
-
-    schema.type = 'object';
-    schema.required = [];
-    schema.properties = {};
-
-    for (var key in json) {
-        if (!json.hasOwnProperty(key)) {
-            continue;
-        }
-
-        var newKey = key,
-            value = json[newKey],
-            curSchema = schema.properties[newKey] = {},
-            aliasSign = options.aliasSign,
-            requiredSign = options.requiredSign,
-            allRequired = options.allRequired;
-
-        /** 使用约定符号指定别名例如：*user_id@uid **/
-        var alias = '';
-        var aliasIndex = newKey.indexOf(aliasSign);
-        if (aliasIndex !== -1) {
-            delete schema.properties[newKey];// 删除原属性结构信息
-            // 标识符号左边为原名右边为别名
-            alias = newKey.substr(aliasIndex + aliasSign.length);
-            newKey = newKey.substr(0, aliasIndex);
-            curSchema = schema.properties[newKey] = {};
-        }
-
-        /** 使用约定符号标记必须项例如：*user_id **/
-        var existRequiredSign = newKey[0] === requiredSign;
-        if (existRequiredSign) {
-            delete schema.properties[newKey];// 删除原属性结构信息
-            newKey = newKey.substr(1);// 去掉前面的标记符号
-            curSchema = schema.properties[newKey] = {};// 清空上级属性列表
-            schema.required.push(newKey);// 必须项放入上级schema.required中
-        }
-        // 如果配置了全部属性为必须项
-        if (allRequired) {
-            // 避免重复添加
-            if (!existRequiredSign) {
-                schema.required.push(newKey);
-            }
-        }
-
-        // 如果存在别名，在当前schema.alias属性记录
-        if (alias) {
-            setSchemaAttribute(curSchema, 'alias', alias);
-        }
-
-        // 记录当前节点对应的key
-        setSchemaAttribute(curSchema, 'name', newKey);
-
-        this.parse(value, curSchema);
-    }
-};
-
-const schemaAttributes = [
+Schema.attributes = [
     // 参考来源 https://www.jianshu.com/p/1711f2f24dcf?utm_campaign=hugo
     '$schema',//The $schema 关键字状态，这种模式被写入草案V4规范。
     'title',// 将使用此架构提供一个标题，title一般用来进行简单的描述，可以省略
@@ -201,9 +265,5 @@ const schemaAttributes = [
     'not',// 该关键字的值是一个JSON Schema。只有待校验JSON元素不能通过该关键字指定的JSON Schema校验的时候，待校验元素才算通过校验。
     'default',
 ];
-
-Schema.setAttribute = function() {
-
-};
 
 export default Schema;

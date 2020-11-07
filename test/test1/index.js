@@ -15,7 +15,6 @@ describe('1.基础用法', () => {
     it('输出的过滤数据是否正确', () => {
         util.deepEqualOutput(filterJson(input, schema), output, __dirname);
     });
-
 });
 
 
