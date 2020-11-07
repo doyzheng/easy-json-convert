@@ -3,28 +3,28 @@ module.exports = {
     '*string': {
         type: 'string',
         default: 'abc',
-        filter(val) {
+        '@filter': val => {
             return val + val + val;
         },
     },
     '*number': {
         type: 'number',
         default: 123456,
-        filter(val) {
+        '@filter': val => {
             return val + val + val;
         },
     },
     '*boolean': {
         type: 'boolean',
         default: true,
-        filter(val) {
+        '@filter': val =>  {
             return !val;
         },
     },
     '*array': {
         type: 'array',
         default: [1, 2, 3, 4],
-        filter(val) {
+        '@filter': val =>  {
             return [...val, ...val];
         },
     },
@@ -34,7 +34,7 @@ module.exports = {
             string: 'abc',
             name: 'name',
         },
-        filter(val) {
+        '@filter': val =>  {
             val.string += val.string;
             val.number = parseInt(val.number) * 100;
             return val;

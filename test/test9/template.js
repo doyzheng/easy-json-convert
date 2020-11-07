@@ -15,7 +15,7 @@ module.exports = [
             'totalBoughtTimes@classtypeOrdercount': 3217,
             '*introduction_app@classtypeIntroduceapp': {
                 type: 'string',
-                filter: function(val) {
+                '@filter': function(val) {
                     const schema = this.schema;
                     const convert = this.convert;
                     const list = JSON.parse(val || '[]');

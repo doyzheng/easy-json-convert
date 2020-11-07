@@ -6,7 +6,7 @@
     'use strict';
 
     /**
-     * 标准JsonSchema属性名
+     * JsonSchema属性名
      * @type {string[]}
      */
     var schemaAttributes = [
@@ -247,6 +247,29 @@
 
     /**
      * 把给定JSON数据，转换成描述对象一致的结构
+     * 函数式调用时可直接转换数据
+     * 实例化时会返回，Convert和Schema
+     * @param {Object} input                        待过滤数据
+     * @param {Object} schema                       描述对象
+     * @param {Object} options                      描述对象
+     * @mixes Convert
+     */
+    function Convert(input, schema, options) {
+        if (this) {
+            return {
+                convert: Convert.Convert,
+                schema: Convert.Schema,
+            };
+        }
+
+        return Convert.Convert(input, schema, options);
+    }
+
+    // 版本号
+    Convert.version = '1.1.0';
+
+    /**
+     * 把给定JSON数据，转换成描述对象一致的结构
      * @param {Object} input                        待过滤数据
      * @param {Object} schema                       描述对象
      * @param {Object} options                      可选配置项
@@ -265,7 +288,7 @@
      * @param {Function} options.filters.object     对象类型转换方法，默认内部处理
      * @return {Array|Object}
      */
-    function Convert(input, schema, options) {
+    Convert.Convert = function(input, schema, options) {
 
         options = merge({
             // 默认返回值
@@ -370,13 +393,12 @@
             if (hasOwnProperty(input, key)) {
 
                 // 处理枚举值
-                if (isArray(schema.enums)) {
-                    handleEnums(input, schema);
-                }
+                handleEnums(input, schema);
 
                 // 使用自定义过滤器返回数据
-                if (isFunction(schema.filter)) {
-                    return schema.filter.call(context, input[key], schema);
+                var filter = getSchemaAttribute(schema, 'filter');
+                if (isFunction(filter)) {
+                    return filter.call(context, input[key], schema);
                 }
 
                 // 使用默认过滤器
@@ -393,9 +415,14 @@
          * @param schema
          */
         var handleEnums = function(input, schema) {
+            var enums = getSchemaAttribute(schema, 'enums');
+            if (!isArray(enums)) {
+                return;
+            }
+
             var key = getInputKey(schema);
-            for (var k in schema.enums) {
-                var item = schema.enums[k];
+            for (var k in enums) {
+                var item = enums[k];
                 if (item.name === input[key]) {
                     input[key] = item.value;
                     return;
@@ -536,7 +563,7 @@
         };
 
         return parse(input, schema);
-    }
+    };
 
     /**
      *  解析json，转换成可描述对象
@@ -549,7 +576,7 @@
      * @param {Object} options.allRequired  默认全部属性必须存在
      * @return {Object}
      */
-    function Schema(jsonTemplate, options) {
+    Convert.Schema = function(jsonTemplate, options) {
 
         options = merge({
             title: '',
@@ -693,31 +720,9 @@
         };
 
         return Object.assign(baseSchema, parse(jsonTemplate));
-    }
+    };
 
-    /**
-     * 把给定JSON数据，转换成描述对象一致的结构
-     * 函数式调用时可直接转换数据
-     * 实例化时会返回，Convert和Schema
-     * @param {Object} input                        待过滤数据
-     * @param {Object} schema                       描述对象
-     * @param {Object} options                      描述对象
-     * @mixes Convert
-     */
-    function Context(input, schema, options) {
-        if (this) {
-            return {
-                convert: Convert,
-                schema: Schema,
-            };
-        }
-
-        return Convert(input, schema, options);
-    }
-
-    /* 静态方法 */
-    Context.convert = Convert;
-    Context.schema = Schema;
-
-    return Context;
+    console.log(Convert);
+    // return Convert;
 }));
+

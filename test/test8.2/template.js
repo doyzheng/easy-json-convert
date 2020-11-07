@@ -49,12 +49,12 @@ module.exports = {
             'coOwnerdptname': '网站微服务研发部[人事系统]',
             'aiApplyform': {
                 type: 'string',
-                filter(val) {
+                '@filter': function(val) {
                     var convert = this.convert;
                     return convert(JSON.parse(val), ({
                         'employeeId@ownerId': {
                             type: 'string',
-                            filter(val) {
+                            '@filter': val => {
                                 return val;
                             },
                         },

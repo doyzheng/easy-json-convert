@@ -3,7 +3,8 @@
   "version": "1.0.1",
   "main": "index.js",
   "dependencies": {
-    "recast": "^0.19.1"
+    "recast": "^0.19.1",
+    "rollup": "^2.33.1"
   },
   "files": [
     "index.js",
@@ -13,7 +14,7 @@
     "mocha": "^8.0.1"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "rollup src/index.js -o index.js & mocha"
   },
   "description": "```\r npm install easy-json-convert\r ```",
   "directories": {
