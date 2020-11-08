@@ -3,23 +3,20 @@
     "version": "1.0.1",
     "main": "index.js",
     "dependencies": {
-        "babel-preset-es2015": "^6.24.1",
         "recast": "^0.19.1",
         "rollup": "^2.33.1",
-        "rollup-plugin-babel": "^4.4.0"
+        "mocha": "^8.0.1"
     },
     "files": [
         "index.js",
         "test"
     ],
     "devDependencies": {
-        "babel-plugin-external-helpers": "^6.22.0",
-        "mocha": "^8.0.1",
         "rollup-plugin-uglify": "^6.0.4"
     },
     "scripts": {
         "test": "mocha",
-        "build:umd": "rollup src/index.js -f umd -n json-convert -o index.js & mocha"
+        "build": "rollup -c ./build/roolup.config.dev.js"
     },
     "description": "```\r npm install easy-json-convert\r ```",
     "directories": {
