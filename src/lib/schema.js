@@ -151,7 +151,11 @@ function Schema(jsonTemplate, options) {
     };
 
     /**
+<<<<<<< HEAD
      * 标准化属性名
+=======
+     * 将不符合jsonSchema规范的属性前加上@前缀
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
      * @param schema
      * @returns {*}
      */

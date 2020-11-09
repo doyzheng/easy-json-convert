@@ -145,10 +145,25 @@
 
     /**
      * 合并对象
+<<<<<<< HEAD
      * @returns {*}
      */
     var merge = function() {
         return Object.assign.apply(this, arguments);
+=======
+     * @param target
+     * @param second
+     * @returns {*}
+     */
+    var merge = function(target, second) {
+        for (var key in second) {
+            if (second.hasOwnProperty(key)) {
+                target[key] = target[key] && target[key].toString() === '[object Object]' ?
+                    merge(target[key], second[key]) : target[key] = second[key];
+            }
+        }
+        return target;
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
     };
 
     /**
@@ -164,8 +179,18 @@
      */
     function Schema(jsonTemplate, options) {
 
+<<<<<<< HEAD
         // 合并配置
         options = merge({}, Schema.config, options);
+=======
+        options = merge({
+            title: '',
+            description: '',
+            requiredSign: '*',
+            aliasSign: '@',
+            allRequired: false,
+        }, options);
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
 
         /**
          * 解析json格式为json-schema
@@ -295,7 +320,11 @@
         };
 
         /**
+<<<<<<< HEAD
          * 标准化属性名
+=======
+         * 将不符合jsonSchema规范的属性前加上@前缀
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
          * @param schema
          * @returns {*}
          */
@@ -361,10 +390,13 @@
         return schema['@' + name];
     };
 
+<<<<<<< HEAD
     /**
      * jsonSchema标准结构属性名
      * @type {string[]}
      */
+=======
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
     Schema.attributes = [
         // 参考来源 https://www.jianshu.com/p/1711f2f24dcf?utm_campaign=hugo
         '$schema',//The $schema 关键字状态，这种模式被写入草案V4规范。
@@ -415,6 +447,7 @@
     ];
 
     /**
+<<<<<<< HEAD
      * 全局配置
      */
     Schema.config = {
@@ -429,6 +462,11 @@
      * 把给定JSON数据，转换成描述对象一致的结构
      * @param {Object} input                        待过滤数据
      * @param {Object} jsonSchema                       描述对象
+=======
+     * 把给定JSON数据，转换成描述对象一致的结构
+     * @param {Object} input                        待过滤数据
+     * @param {Object} schema                       描述对象
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
      * @param {Object} options                      可选配置项
      * @param {Object} options.redundancy           是否保留冗余属性，默认false
      * @param {Object} options.defaults             基本数据类型默认定义
@@ -445,6 +483,7 @@
      * @param {Function} options.filters.object     对象类型转换方法，默认内部处理
      * @return {Array|Object}
      */
+<<<<<<< HEAD
     function Convert(input, jsonSchema, options) {
         if (!jsonSchema) {
             return input;
@@ -457,6 +496,42 @@
          * 上下文执行环境，方便在过滤器中使用convert,Schema方法
          */
         var context = new Context;
+=======
+    function Convert(input, schema, options) {
+
+        options = merge({
+            // 默认返回值
+            defaults: {
+                string: '',
+                number: 0,
+                boolean: false,
+                null: null,
+            },
+            // 默认过滤器
+            filters: {
+                string: function(val) {
+                    return includes([undefined, null], val) ? '' : String(val);
+                },
+                number: function(val) {
+                    return includes([undefined, null, ''], val) ? 0 : Number(val);
+                },
+                boolean: function(val) {
+                    return includes(['0', ''], val) ? false : Boolean(val);
+                },
+                null: function(val) {
+                    return val === null ? val : null;
+                },
+                array: function(val) {
+                    return isArray(val) ? val : [];
+                },
+                object: function(val) {
+                    return isObject(val) ? val : {};
+                },
+            },
+            // 是否冗余字段
+            redundancy: false,
+        }, options);
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
 
         /**
          * @param input
@@ -470,7 +545,11 @@
             }
 
             if (!isSchema(schema)) {
+<<<<<<< HEAD
                 schema = new Schema(schema);
+=======
+                schema = Schema(schema);
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
             }
 
             // 处理对象类型
@@ -494,6 +573,15 @@
         };
 
         /**
+<<<<<<< HEAD
+=======
+         * 绑定上下文执行环境，方便在过滤器中使用Convert,Schema
+         * 上下文执行环境，方便在过滤器中使用convert,Schema方法
+         */
+        var context = new Context;
+
+        /**
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
          * 根据描述对象获取输入值
          * @param {Object|Array} input
          * @param {Object} schema
@@ -506,9 +594,16 @@
             if (hasOwnProperty(input, key)) {
 
                 // 处理枚举值
+<<<<<<< HEAD
                 handleEnums(input, schema);
 
                 // 处理过滤器
+=======
+                if (isArray(schema.enums)) {
+                    handleEnums(input, schema);
+                }
+
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
                 return handleFilter(input, schema);
             }
 
@@ -522,6 +617,7 @@
          * @param schema
          */
         var handleEnums = function(input, schema) {
+<<<<<<< HEAD
             var enums = Schema.getAttribute(schema, 'enums');
             if (isEmptyArray(enums)) {
                 return;
@@ -531,6 +627,11 @@
 
             for (var k in enums) {
                 var item = enums[k];
+=======
+            var key = getInputKey(schema);
+            for (var k in schema.enums) {
+                var item = schema.enums[k];
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
                 if (item.name === input[key]) {
                     input[key] = item.value;
                     return;
@@ -539,7 +640,11 @@
         };
 
         /**
+<<<<<<< HEAD
          * 处理过滤器
+=======
+         * 使用过滤器
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
          * @param input
          * @param schema
          * @returns {*}
@@ -554,7 +659,10 @@
                 return filter.call(context, value, input, schema);
             }
 
+<<<<<<< HEAD
             // 使用默认过滤器
+=======
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
             return value;
         };
 
@@ -690,6 +798,7 @@
             return input;
         };
 
+<<<<<<< HEAD
         return parse(input, jsonSchema);
     }
 
@@ -736,6 +845,12 @@
     };
 
     /**
+=======
+        return parse(input, schema);
+    }
+
+    /**
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
      * 把给定JSON数据，转换成描述对象一致的结构
      * @param {Object} input                        待过滤数据
      * @param {Object} schema                       描述对象
@@ -756,6 +871,7 @@
      * @return {Array|Object}
      */
     function Context(input, schema, options) {
+<<<<<<< HEAD
         if (!(this instanceof Context)) {
             return Convert(input, schema, options);
         }
@@ -776,6 +892,24 @@
     Context.prototype.version = Context.version;
     Context.prototype.schema = Context.schema;
     Context.prototype.convert = Context.convert;
+=======
+        if (this) {
+            return {
+                convert: Convert,
+                schema: Schema,
+            };
+        }
+
+        return Convert(input, schema, options);
+    }
+
+    // 版本号
+    Context.version = '1.1.0';
+
+    Context.schema = Schema;
+
+    Context.convert = Convert;
+>>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
 
     return Context;
 
