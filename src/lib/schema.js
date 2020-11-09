@@ -155,6 +155,11 @@ function Schema(jsonTemplate, options) {
         }
     };
 
+    /**
+     * 将不符合jsonSchema规范的属性前加上@前缀
+     * @param schema
+     * @returns {*}
+     */
     var normAttribute = function(schema) {
         for (var name in schema) {
             if (!schema.hasOwnProperty(name)) {

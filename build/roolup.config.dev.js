@@ -8,6 +8,6 @@ export default {
         file: 'index.js'
     },
     plugins: [
-        uglify(),
+      //  uglify(),
     ],
 };

@@ -98,23 +98,6 @@ function Convert(input, schema, options) {
     };
 
     /**
-     * 过滤器
-     * @param {*} val
-     * @param {String} type
-     * @returns {*}
-     */
-    var filters = function(val, type) {
-        // 基本数据类型过滤方法
-        var filter = options.filters[type];
-        if (isFunction(filter)) {
-            return filter(val);
-        }
-
-        // 如果过滤器不存在直接返回原值
-        return val;
-    };
-
-    /**
      * 根据描述对象获取用于取出输入数据的字段名
      * @param {Object} schema
      * @returns {String}
@@ -169,6 +152,12 @@ function Convert(input, schema, options) {
         }
     };
 
+    /**
+     * 使用过滤器
+     * @param input
+     * @param schema
+     * @returns {*}
+     */
     var handleFilter = function(input, schema) {
         var key = getInputKey(schema);
         var value = input[key];
@@ -179,7 +168,6 @@ function Convert(input, schema, options) {
             return filter.call(context, value, input, schema);
         }
 
-        // 使用默认过滤器
         return value;
     };
 
