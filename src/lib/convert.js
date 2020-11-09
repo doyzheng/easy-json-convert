@@ -129,11 +129,7 @@ function Convert(input, jsonSchema, options) {
     };
 
     /**
-<<<<<<< HEAD
      * 处理过滤器
-=======
-     * 使用过滤器
->>>>>>> f69726d72ef59b7d9eb6faa9c28aaea0be77836b
      * @param input
      * @param schema
      * @returns {*}
