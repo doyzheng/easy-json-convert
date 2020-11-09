@@ -3,9 +3,10 @@
     "version": "1.0.1",
     "main": "index.js",
     "dependencies": {
+        "deepcopy": "^2.1.0",
+        "mocha": "^8.0.1",
         "recast": "^0.19.1",
-        "rollup": "^2.33.1",
-        "mocha": "^8.0.1"
+        "rollup": "^2.33.1"
     },
     "files": [
         "index.js",
@@ -16,7 +17,7 @@
     },
     "scripts": {
         "test": "mocha",
-        "build": "rollup -c ./build/roolup.config.dev.js"
+        "build": "rollup -c ./build/roolup.config.dev.js & mocha"
     },
     "description": "```\r npm install easy-json-convert\r ```",
     "directories": {

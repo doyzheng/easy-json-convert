@@ -1,3 +1,5 @@
+import Schema from './schema';
+import Context from './context';
 import {
     isSchema,
     isObject,
@@ -13,13 +15,10 @@ import {
     merge,
 } from './utils';
 
-import Schema from './schema';
-import Context from './context';
-
 /**
  * 把给定JSON数据，转换成描述对象一致的结构
  * @param {Object} input                        待过滤数据
- * @param {Object} schema                       描述对象
+ * @param {Object} jsonSchema                       描述对象
  * @param {Object} options                      可选配置项
  * @param {Object} options.redundancy           是否保留冗余属性，默认false
  * @param {Object} options.defaults             基本数据类型默认定义
@@ -36,40 +35,18 @@ import Context from './context';
  * @param {Function} options.filters.object     对象类型转换方法，默认内部处理
  * @return {Array|Object}
  */
-function Convert(input, schema, options) {
+function Convert(input, jsonSchema, options) {
+    if (!jsonSchema) {
+        return input;
+    }
 
-    options = merge({
-        // 默认返回值
-        defaults: {
-            string: '',
-            number: 0,
-            boolean: false,
-            null: null,
-        },
-        // 默认过滤器
-        filters: {
-            string: function(val) {
-                return includes([undefined, null], val) ? '' : String(val);
-            },
-            number: function(val) {
-                return includes([undefined, null, ''], val) ? 0 : Number(val);
-            },
-            boolean: function(val) {
-                return includes(['0', ''], val) ? false : Boolean(val);
-            },
-            null: function(val) {
-                return val === null ? val : null;
-            },
-            array: function(val) {
-                return isArray(val) ? val : [];
-            },
-            object: function(val) {
-                return isObject(val) ? val : {};
-            },
-        },
-        // 是否冗余字段
-        redundancy: false,
-    }, options);
+    // 合并配置项
+    options = merge({}, Convert.config, options);
+
+    /**
+     * 上下文执行环境，方便在过滤器中使用convert,Schema方法
+     */
+    var context = new Context;
 
     /**
      * @param input
@@ -83,7 +60,7 @@ function Convert(input, schema, options) {
         }
 
         if (!isSchema(schema)) {
-            schema = Schema(schema);
+            schema = new Schema(schema);
         }
 
         // 处理对象类型
@@ -98,23 +75,6 @@ function Convert(input, schema, options) {
     };
 
     /**
-     * 过滤器
-     * @param {*} val
-     * @param {String} type
-     * @returns {*}
-     */
-    var filters = function(val, type) {
-        // 基本数据类型过滤方法
-        var filter = options.filters[type];
-        if (isFunction(filter)) {
-            return filter(val);
-        }
-
-        // 如果过滤器不存在直接返回原值
-        return val;
-    };
-
-    /**
      * 根据描述对象获取用于取出输入数据的字段名
      * @param {Object} schema
      * @returns {String}
@@ -122,12 +82,6 @@ function Convert(input, schema, options) {
     var getInputKey = function(schema) {
         return Schema.getAttribute(schema, 'alias') || Schema.getAttribute(schema, 'name');
     };
-
-    /**
-     * 绑定上下文执行环境，方便在过滤器中使用Convert,Schema
-     * 上下文执行环境，方便在过滤器中使用convert,Schema方法
-     */
-    var context = new Context;
 
     /**
      * 根据描述对象获取输入值
@@ -142,10 +96,9 @@ function Convert(input, schema, options) {
         if (hasOwnProperty(input, key)) {
 
             // 处理枚举值
-            if (isArray(schema.enums)) {
-                handleEnums(input, schema);
-            }
+            handleEnums(input, schema);
 
+            // 处理过滤器
             return handleFilter(input, schema);
         }
 
@@ -159,9 +112,15 @@ function Convert(input, schema, options) {
      * @param schema
      */
     var handleEnums = function(input, schema) {
+        var enums = Schema.getAttribute(schema, 'enums');
+        if (isEmptyArray(enums)) {
+            return;
+        }
+
         var key = getInputKey(schema);
-        for (var k in schema.enums) {
-            var item = schema.enums[k];
+
+        for (var k in enums) {
+            var item = enums[k];
             if (item.name === input[key]) {
                 input[key] = item.value;
                 return;
@@ -169,6 +128,12 @@ function Convert(input, schema, options) {
         }
     };
 
+    /**
+     * 处理过滤器
+     * @param input
+     * @param schema
+     * @returns {*}
+     */
     var handleFilter = function(input, schema) {
         var key = getInputKey(schema);
         var value = input[key];
@@ -315,7 +280,49 @@ function Convert(input, schema, options) {
         return input;
     };
 
-    return parse(input, schema);
+    return parse(input, jsonSchema);
 }
+
+/**
+ * 全局默认配置
+ */
+Convert.config = {
+    // 默认返回值
+    defaults: {
+        string: '',
+        number: 0,
+        boolean: false,
+        null: null,
+    },
+    // 默认过滤器
+    filters: {
+        string: function(val) {
+            return includes([undefined, null], val) ? '' : String(val);
+        },
+        number: function(val) {
+            return includes([undefined, null, ''], val) ? 0 : Number(val);
+        },
+        boolean: function(val) {
+            if (val === 'true') {
+                return true;
+            }
+            if (val === 'false') {
+                return true;
+            }
+            return includes(['0', ''], val) ? false : Boolean(val);
+        },
+        null: function(val) {
+            return val === null ? val : null;
+        },
+        array: function(val) {
+            return isArray(val) ? val : [];
+        },
+        object: function(val) {
+            return isObject(val) ? val : {};
+        },
+    },
+    // 是否冗余字段
+    redundancy: false,
+};
 
 export default Convert;

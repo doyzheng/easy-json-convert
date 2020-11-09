@@ -20,13 +20,8 @@ import {
  */
 function Schema(jsonTemplate, options) {
 
-    options = merge({
-        title: '',
-        description: '',
-        requiredSign: '*',
-        aliasSign: '@',
-        allRequired: false,
-    }, options);
+    // 合并配置
+    options = merge({}, Schema.config, options);
 
     /**
      * 解析json格式为json-schema
@@ -155,6 +150,11 @@ function Schema(jsonTemplate, options) {
         }
     };
 
+    /**
+     * 标准化属性名
+     * @param schema
+     * @returns {*}
+     */
     var normAttribute = function(schema) {
         for (var name in schema) {
             if (!schema.hasOwnProperty(name)) {
@@ -217,6 +217,10 @@ Schema.getAttribute = function(schema, name) {
     return schema['@' + name];
 };
 
+/**
+ * jsonSchema标准结构属性名
+ * @type {string[]}
+ */
 Schema.attributes = [
     // 参考来源 https://www.jianshu.com/p/1711f2f24dcf?utm_campaign=hugo
     '$schema',//The $schema 关键字状态，这种模式被写入草案V4规范。
@@ -265,5 +269,16 @@ Schema.attributes = [
     'not',// 该关键字的值是一个JSON Schema。只有待校验JSON元素不能通过该关键字指定的JSON Schema校验的时候，待校验元素才算通过校验。
     'default',
 ];
+
+/**
+ * 全局配置
+ */
+Schema.config = {
+    title: '',          // 结构标题
+    description: '',    // 结构描述
+    requiredSign: '*',  // 标记必须存在的属性标识
+    aliasSign: '@',     // 标记别名属性标识
+    allRequired: false, // 默认全部属性必须存在
+};
 
 export default Schema;

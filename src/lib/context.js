@@ -22,21 +22,25 @@ import Convert from './convert';
  * @return {Array|Object}
  */
 function Context(input, schema, options) {
-    if (this) {
-        return {
-            convert: Convert,
-            schema: Schema,
-        };
+    if (!(this instanceof Context)) {
+        return Convert(input, schema, options);
     }
-
-    return Convert(input, schema, options);
 }
 
-// 版本号
-Context.version = '1.1.0';
-
+/**
+ * 静态调用
+ * @type {string}
+ */
+Context.version = '1.1.0';// 版本号
 Context.schema = Schema;
-
 Context.convert = Convert;
+
+/**
+ * 扩展原型链
+ * @type {string}
+ */
+Context.prototype.version = Context.version;
+Context.prototype.schema = Context.schema;
+Context.prototype.convert = Context.convert;
 
 export default Context;

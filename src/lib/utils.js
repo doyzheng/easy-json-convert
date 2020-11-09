@@ -139,18 +139,10 @@ export var isArraySchema = function(schema) {
 
 /**
  * 合并对象
- * @param target
- * @param second
  * @returns {*}
  */
-export var merge = function(target, second) {
-    for (var key in second) {
-        if (second.hasOwnProperty(key)) {
-            target[key] = target[key] && target[key].toString() === '[object Object]' ?
-                merge(target[key], second[key]) : target[key] = second[key];
-        }
-    }
-    return target;
+export var merge = function() {
+    return Object.assign.apply(this, arguments);
 };
 
 /**

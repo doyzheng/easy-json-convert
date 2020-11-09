@@ -1,0 +1,43 @@
+{
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "查询考试时间",
+    "description": "获取项目周期地区考试时间信息",
+    "type": "array",
+
+    "items": {
+        "type": "object",
+        "required": ["year", "days"],
+
+        "properties": {
+            "year": {
+                "type": "string",
+                "required": true,
+                "@alias": "examYear",
+                "@name": "year",
+
+                "@enums": [{
+                    "type": "string",
+                    "name": "N",
+                    "value": "no",
+                    "desc": ""
+                }, {
+                    "type": "string",
+                    "name": "Y",
+                    "value": "yes",
+                    "desc": ""
+                }]
+            },
+
+            "days": {
+                "type": "string",
+                "required": true,
+                "@alias": "examDays",
+                "@name": "days",
+                "@enums": []
+            }
+        }
+    }
+}, {
+"redundancy": undefined
+}

@@ -5,9 +5,9 @@ export default {
     output: {
         name: 'json-convert',
         format: 'umd',
-        file: 'index.js'
+        file: 'index.js',
     },
     plugins: [
-        uglify(),
+      //  uglify(),
     ],
 };

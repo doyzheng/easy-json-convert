@@ -1,0 +1,39 @@
+{
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "查询考试时间",
+    "description": "获取项目周期地区考试时间信息",
+    "type": "object",
+
+    "properties": {
+        "projectId": {
+            "type": "string",
+            "required": true,
+            "default": "123456",
+            "@alias": "projectId",
+            "@name": "projectId",
+
+            "@enums": [{
+                "type": "string",
+                "name": "yes",
+                "value": "Y",
+                "desc": ""
+            }, {
+                "type": "string",
+                "name": "no",
+                "value": "N",
+                "desc": ""
+            }]
+        },
+
+        "schoolId": {
+            "type": "string",
+            "required": true,
+            "@alias": "schoolId",
+            "@name": "schoolId",
+            "@enums": []
+        }
+    },
+
+    "required": ["projectId", "schoolId"]
+}
