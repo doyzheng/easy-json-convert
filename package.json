@@ -5,14 +5,18 @@
     "dependencies": {
         "deepcopy": "^2.1.0",
         "mocha": "^8.0.1",
-        "recast": "^0.19.1",
-        "rollup": "^2.33.1"
+        "recast": "^0.19.1"
     },
     "files": [
         "index.js",
         "test"
     ],
     "devDependencies": {
+        "@babel/core": "^7.12.3",
+        "@babel/preset-env": "^7.12.1",
+        "babel-preset-es2015-rollup": "^3.0.0",
+        "rollup": "^2.33.1",
+        "rollup-plugin-babel": "^4.4.0",
         "rollup-plugin-uglify": "^6.0.4"
     },
     "scripts": {
