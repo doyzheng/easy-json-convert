@@ -17,3 +17,6 @@ require('./test8.3');
 require('./test8.2');
 require('./test9');
 require('./test10');
+
+
+require('./test12.0');

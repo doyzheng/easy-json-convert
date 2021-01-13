@@ -142,8 +142,32 @@ export var isArraySchema = function(schema) {
  * @returns {*}
  */
 export var merge = function() {
-    return Object.assign.apply(this, arguments);
+    var length = arguments.length;
+    if (length === 0) {
+        return {};
+    }
+    if (length === 1) {
+        return arguments[0];
+    }
+    var target = arguments[0] || {};
+    for (var i = 1; i < length; i++) {
+        var source = arguments[i];
+        for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+                target[key] = source[key];
+            }
+        }
+    }
+
+    return target;
 };
+
+/**
+ * 兼容低版本IE
+ */
+if (typeof Object.assign !== 'function') {
+    Object.assign = merge;
+}
 
 /**
  * 导出全部

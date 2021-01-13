@@ -4,6 +4,7 @@
     "main": "index.js",
     "dependencies": {
         "deepcopy": "^2.1.0",
+        "deepmerge": "^4.2.2",
         "mocha": "^8.0.1",
         "recast": "^0.19.1"
     },

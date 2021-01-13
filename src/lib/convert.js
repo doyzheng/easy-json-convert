@@ -94,12 +94,13 @@ function Convert(input, jsonSchema, options) {
 
         // 只有属性存在时才能获取属性值
         if (hasOwnProperty(input, key)) {
+            // 处理过滤器
+            handleFilter(input, schema);
 
             // 处理枚举值
             handleEnums(input, schema);
 
-            // 处理过滤器
-            return handleFilter(input, schema);
+            return input[key];
         }
 
         // 未定义
@@ -113,16 +114,27 @@ function Convert(input, jsonSchema, options) {
      */
     var handleEnums = function(input, schema) {
         var enums = Schema.getAttribute(schema, 'enums');
-        if (isEmptyArray(enums)) {
+        //  验证是否含义枚举值
+        if (isEmptyArray()) {
             return;
         }
-
         var key = getInputKey(schema);
 
-        for (var k in enums) {
-            var item = enums[k];
-            if (item.name === input[key]) {
-                input[key] = item.value;
+        for (var i in enums) {
+            var item = enums[i];
+
+            // 根据枚举值定义类型，转换正确枚举值
+            var inputFilter = options.filters[item.input_type];
+            var outputFilter = options.filters[item.output_type];
+            if (isFunction(inputFilter)) {
+                item.input_value = inputFilter(item.input_value);
+            }
+            if (isFunction(outputFilter)) {
+                item.output_value = outputFilter(item.output_value);
+            }
+
+            if (input[key] === item.input_value) {
+                input[key] = item.output_value;
                 return;
             }
         }
@@ -132,7 +144,6 @@ function Convert(input, jsonSchema, options) {
      * 处理过滤器
      * @param input
      * @param schema
-     * @returns {*}
      */
     var handleFilter = function(input, schema) {
         var key = getInputKey(schema);
@@ -141,10 +152,8 @@ function Convert(input, jsonSchema, options) {
         // 使用自定义过滤器返回数据
         var filter = Schema.getAttribute(schema, 'filter') || options.filters[schema.type];
         if (isFunction(filter)) {
-            return filter.call(context, value, input, schema);
+            input[key] = filter.call(context, value, input, schema);
         }
-
-        return value;
     };
 
     /**
@@ -302,13 +311,7 @@ Convert.config = {
             return includes([undefined, null, ''], val) ? 0 : Number(val);
         },
         boolean: function(val) {
-            if (val === 'true') {
-                return true;
-            }
-            if (val === 'false') {
-                return true;
-            }
-            return includes(['0', ''], val) ? false : Boolean(val);
+            return Boolean(val);
         },
         null: function(val) {
             return val === null ? val : null;

@@ -1,0 +1,33 @@
+{
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "测试接口1",
+    "description": "",
+    "type": "object",
+
+    "properties": {
+        "coursewareType": {
+            "type": "boolean",
+            "required": true,
+            "default": "",
+            "@alias": "courseWareType",
+            "@name": "coursewareType",
+
+            "@enums": [{
+                "input_value": "true",
+                "input_type": "boolean",
+                "output_value": "Y1",
+                "output_type": "string",
+                "description": ""
+            }, {
+                "input_value": "false",
+                "input_type": "boolean",
+                "output_value": "N1",
+                "output_type": "string",
+                "description": ""
+            }]
+        }
+    },
+
+    "required": ["coursewareType"]
+}
