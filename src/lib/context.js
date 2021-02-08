@@ -22,9 +22,7 @@ import Convert from './convert';
  * @return {Array|Object}
  */
 function Context(input, schema, options) {
-    if (!(this instanceof Context)) {
-        return Convert(input, schema, options);
-    }
+    return Convert(input, schema, options);
 }
 
 /**

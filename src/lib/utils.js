@@ -152,8 +152,8 @@ export var merge = function() {
     var target = arguments[0] || {};
     for (var i = 1; i < length; i++) {
         var source = arguments[i];
-        for (var key in source) {
-            if (source.hasOwnProperty(key)) {
+        if (isObject(source)){
+            for (var key in source) {
                 target[key] = source[key];
             }
         }
